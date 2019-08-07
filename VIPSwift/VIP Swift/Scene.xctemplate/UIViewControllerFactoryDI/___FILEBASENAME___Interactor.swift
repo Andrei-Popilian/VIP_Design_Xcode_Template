@@ -23,7 +23,7 @@ protocol ___VARIABLE_sceneName___DataStore {
     var dataSource: ___VARIABLE_sceneName___Model.DataSource { get }
 }
 
-struct ___VARIABLE_sceneName___Interactor<Factory>: Interactable, ___VARIABLE_sceneName___DataStore where Factory: ServicesFactorable & ___VARIABLE_sceneName___Factorable {
+final class ___VARIABLE_sceneName___Interactor<Factory>: Interactable, ___VARIABLE_sceneName___DataStore where Factory: ServicesFactorable & ___VARIABLE_sceneName___Factorable {
     
     var dataSource: ___VARIABLE_sceneName___Model.DataSource
     

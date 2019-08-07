@@ -16,7 +16,7 @@ protocol ___VARIABLE_sceneName___PresentationLogic {
     func presentResponse(_ response: ___VARIABLE_sceneName___Model.Responses)
 }
 
-struct ___VARIABLE_sceneName___Presenter: Presentable {
+final class ___VARIABLE_sceneName___Presenter: Presentable {
     private weak var viewController: ___VARIABLE_sceneName___DisplayLogic?
     
     init(_ viewController: ___VARIABLE_sceneName___DisplayLogic?) {

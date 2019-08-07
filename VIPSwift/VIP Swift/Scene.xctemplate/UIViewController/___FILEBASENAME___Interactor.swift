@@ -23,7 +23,7 @@ protocol ___VARIABLE_sceneName___DataStore {
     var dataSource: ___VARIABLE_sceneName___Model.DataSource { get }
 }
 
-struct ___VARIABLE_sceneName___Interactor: Interactable, ___VARIABLE_sceneName___DataStore {
+final class ___VARIABLE_sceneName___Interactor: Interactable, ___VARIABLE_sceneName___DataStore {
     
     var dataSource: ___VARIABLE_sceneName___Model.DataSource
     private var presenter: ___VARIABLE_sceneName___PresentationLogic

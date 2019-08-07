@@ -14,13 +14,11 @@ import UIKit
 
 protocol ___VARIABLE_sceneName___Routing {
     
-    mutating func routeTo(_ routes: ___VARIABLE_sceneName___Model.Routes)
-    var age: Int { get set }
+    func routeTo(_ routes: ___VARIABLE_sceneName___Model.Routes)
 }
 
-struct ___VARIABLE_sceneName___Router: Routeable  {
+final class ___VARIABLE_sceneName___Router: Routeable  {
     
-    internal var age: Int = 0
     private weak var viewController: UIViewController?
     
     init(_ viewController: UIViewController?) {
@@ -31,16 +29,13 @@ struct ___VARIABLE_sceneName___Router: Routeable  {
 
 //MARK: - ___VARIABLE_sceneName___Routing
 extension ___VARIABLE_sceneName___Router: ___VARIABLE_sceneName___Routing {
-    mutating func routeTo(_ routes: ___VARIABLE_sceneName___Model.Routes) {
+    func routeTo(_ routes: ___VARIABLE_sceneName___Model.Routes) {
         
         switch routes {
             
         case .xScene(let data):
             showXSceneBy(data)
         }
-        
-        age = 22
-        print("Show X Screen")
     }
 }
 

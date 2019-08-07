@@ -12,6 +12,6 @@
 
 import UIKit
 
-class ___VARIABLE_sceneName___View: UIView {
+final class ___VARIABLE_sceneName___View: UIView {
     
 }

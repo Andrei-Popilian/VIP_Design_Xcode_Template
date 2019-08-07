@@ -17,7 +17,7 @@ protocol ___VARIABLE_sceneName___Routing {
      func routeTo(_ routes: ___VARIABLE_sceneName___Model.Routes)
 }
 
-struct ___VARIABLE_sceneName___Router: Routeable  {
+final class ___VARIABLE_sceneName___Router: Routeable  {
     
     private weak var viewController: UIViewController?
     
