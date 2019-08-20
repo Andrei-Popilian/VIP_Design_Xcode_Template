@@ -15,7 +15,7 @@ http://clean-swift.com/clean-swift-ios-architecture
 ## Installation
 
 * Before starting to use VIP Templates, please make sure you have the following protocols (adding some constraints to our implementation):
-* You can either create by yourself or copy them from the template folder. (Soon will be added to the templates as checkmarks)
+* You can either create by yourself or copy them from the **Architecture** folder inside the templates folder. (Soon will be added to the templates as checkmarks)
     * Factorable.swift
     * VIPArchitecture.swift
 
