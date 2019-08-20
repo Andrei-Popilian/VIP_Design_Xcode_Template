@@ -103,7 +103,7 @@ make uninstall_templates
 
 ### Add Dependency Injection or Not
 
-* Current supported dependency injection designs: **Factory
+* Current supported dependency injection designs: **Factory**
 
 * To add dependency injection support you must check the **"Add Factory Dependency Injection"** on Scene Template as follows:
 <img width="729" alt="Screen Shot 2019-08-20 at 3 19 23 PM" src="https://user-images.githubusercontent.com/45980382/63352584-afc9e900-c361-11e9-8131-88e4084bb2eb.png">
