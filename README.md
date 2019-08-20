@@ -1,4 +1,4 @@
-# VIP_Design_Xcode_Template
+# VIP Xcode Templates
 VIP design pattern (Clean Swift by Uncle Bob)
 
 This is a modification of Clean Swift Templates (http://clean-swift.com)
