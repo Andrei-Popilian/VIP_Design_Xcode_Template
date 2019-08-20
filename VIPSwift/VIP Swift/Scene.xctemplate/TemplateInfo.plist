@@ -112,7 +112,21 @@
 			<key>Name</key>
 			<string>MainView File Name:</string>
 			<key>Required</key>
-			<string>YES</string>
+			<true/>
+			<key>Type</key>
+			<string>static</string>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>___VARIABLE_sceneName:identifier___SceneTests</string>
+			<key>Description</key>
+			<string>The General Unit Tests file</string>
+			<key>Identifier</key>
+			<string>unitTestsFileName</string>
+			<key>Name</key>
+			<string>Unit Tests File Name:</string>
+			<key>Required</key>
+			<true/>
 			<key>Type</key>
 			<string>static</string>
 		</dict>

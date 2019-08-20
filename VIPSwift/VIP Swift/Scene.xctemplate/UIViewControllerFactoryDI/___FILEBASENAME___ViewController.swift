@@ -12,7 +12,7 @@
 
 import UIKit
 
-protocol ___VARIABLE_sceneName___DisplayLogic where Self: UIViewController  {
+protocol ___VARIABLE_sceneName___DisplayLogic where Self: UIViewController {
     
     func displayViewModel(_ viewModel: ___VARIABLE_sceneName___Model.ViewModels)
 }
@@ -23,7 +23,7 @@ final class ___VARIABLE_sceneName___ViewController<Factory>: UIViewController, D
     private let mainView: ___VARIABLE_sceneName___View
     private var interactor: ___VARIABLE_sceneName___Interactable!
     
-    lazy var router: ___VARIABLE_sceneName___Routing = {
+    private lazy var router: ___VARIABLE_sceneName___Routing = {
         factory.makeRouter(viewController: self)
     }()
     
@@ -42,7 +42,9 @@ final class ___VARIABLE_sceneName___ViewController<Factory>: UIViewController, D
     }
     
     override func loadView() {
+        mainView.delegate = self
         view = mainView
+        
     }
     
     required init?(coder: NSCoder) {
@@ -65,11 +67,24 @@ extension ___VARIABLE_sceneName___ViewController: ___VARIABLE_sceneName___Displa
 }
 
 
+//MARK: - ___VARIABLE_sceneName___ViewDelegate
+extension ___VARIABLE_sceneName___ViewController: ___VARIABLE_sceneName___ViewDelegate {
+    
+    func sendDataBackToParent(_ data: Data) {
+        //usually this delegate takes care of users actions and requests through UI
+        
+        //do something with the data or message send back from View
+    }
+}
+
+
 //MARK: - Private Zone
 private extension ___VARIABLE_sceneName___ViewController {
     
     func displayDoSomething(_ viewModel: NSObject) {
         print("Use the mainView to present the viewModel")
+        //example of using router
+        router.routeTo(.xScene(22))
     }
 }
 
