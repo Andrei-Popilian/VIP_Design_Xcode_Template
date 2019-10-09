@@ -47,12 +47,12 @@ extension ___VARIABLE_sceneName___Factorable {
 // copy this on a separate file
 protocol ServicesFactorable {
     
-    func makeXService() -> xService
+    //func makeXService() -> xService
 }
 
 extension ServicesFactorable {
     
-    func makeXService() -> xService {
-        xService()
-    }
+//    func makeXService() -> xService {
+//        xService()
+//    }
 }

@@ -32,6 +32,6 @@ struct ___VARIABLE_sceneName___Model {
     }
     
     struct DataSource: DataSourceable {
-        var test: Int
+        //var test: Int
     }
 }
