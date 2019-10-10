@@ -21,7 +21,7 @@ final class ___VARIABLE_sceneName___View: UIView {
     
     weak var delegate: ___VARIABLE_sceneName___ViewDelegate?
     
-    private struct ViewTraits {
+    private enum ViewTraits {
         
         static let leftMargin: CGFloat = 10.0
     }

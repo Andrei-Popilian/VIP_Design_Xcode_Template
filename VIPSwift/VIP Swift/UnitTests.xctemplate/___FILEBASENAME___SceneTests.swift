@@ -36,7 +36,7 @@ class ___VARIABLE_sceneName___SceneTests: XCTestCase {
     
     override func setUp() {
         
-        let customDataSource = ___VARIABLE_sceneName___Model.DataSource(test:222)
+        let customDataSource = ___VARIABLE_sceneName___Model.DataSource()
         let cusomtView = ___VARIABLE_sceneName___View()
         
         vc = ___VARIABLE_sceneName___ViewController(factory: ___VARIABLE_sceneName___InjectorTest.shared, mainView: cusomtView, dataSource: customDataSource)
