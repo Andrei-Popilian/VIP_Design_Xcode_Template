@@ -13,92 +13,90 @@
 import UIKit
 
 protocol FirstSceneDisplayLogic where Self: UIViewController {
-  
-  func displayViewModel(_ viewModel: FirstSceneModel.ViewModels)
+    
+    func displayViewModel(_ viewModel: FirstSceneModel.ViewModels)
 }
 
 final class FirstSceneViewController<Factory>: UIViewController, Displayable where Factory: FirstSceneFactorable {
-  
-  private let factory: Factory
-  private let mainView: FirstSceneView
-  private var interactor: FirstSceneInteractable!
-  
-  private lazy var router: FirstSceneRouting = {
-    factory.makeRouter(viewController: self)
-  }()
-  
-  init(factory: Factory, mainView: FirstSceneView, dataSource: FirstSceneModel.DataSource) {
-    self.factory = factory
-    self.mainView = mainView
     
-    super.init(nibName: nil, bundle: nil)
-    self.interactor = factory.makeInteractor(viewController: self, dataSource: dataSource)
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    //doSomething()
-  }
-  
-  override func loadView() {
-    mainView.delegate = self
-    view = mainView
-    view.backgroundColor = .red
+    private let factory: Factory
+    private let mainView: FirstSceneView
+    private var interactor: FirstSceneInteractable!
     
-  }
-  
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented, You should't initialize the ViewController through Storyboards")
-  }
-  
-  
-  //Only for test purpose
-  func getCurrentDataSource() -> FirstSceneModel.DataSource {
-    return interactor.dataSource
-  }
-  
-  //only for test purpose
-  func doSomethingToInteractor() {
-     doSomethingWithInteractor(dataSource: interactor.dataSource)
-  }
+    private lazy var router: FirstSceneRouting = {
+        factory.makeRouter(viewController: self)
+    }()
+    
+    init(factory: Factory, mainView: FirstSceneView, dataSource: FirstSceneModel.DataSource) {
+        self.factory = factory
+        self.mainView = mainView
+        
+        super.init(nibName: nil, bundle: nil)
+        self.interactor = factory.makeInteractor(viewController: self, dataSource: dataSource)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented, You should't initialize the ViewController through Storyboards")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //doSomething()
+    }
+    
+    override func loadView() {
+        mainView.delegate = self
+        view = mainView
+        view.backgroundColor = .red
+    }
+    
+    //Only for test purpose
+    func getCurrentDataSource() -> FirstSceneModel.DataSource {
+        return interactor.dataSource
+    }
+    
+    //only for test purpose
+    func doSomethingToInteractor() {
+        doSomethingWithInteractor(dataSource: interactor.dataSource)
+    }
 }
 
 
 //MARK: - FirstSceneDisplayLogic
 extension FirstSceneViewController: FirstSceneDisplayLogic {
-  
-  func displayViewModel(_ viewModel: FirstSceneModel.ViewModels) {
     
-    switch viewModel {
-      
-    case .doSomething(let viewModel):
-     displayDoSomething(viewModel)
+    func displayViewModel(_ viewModel: FirstSceneModel.ViewModels) {
+        
+        switch viewModel {
+            
+        case .doSomething(let viewModel):
+            displayDoSomething(viewModel)
+        }
     }
-  }
 }
 
 
 //MARK: - FirstSceneViewDelegate
 extension FirstSceneViewController: FirstSceneViewDelegate {
-  
-  func sendDataBackToParent(_ data: Data) {
-    //usually this delegate takes care of users actions and requests through UI
-    //do something with the data or message send back from View
-  }
+    
+    func sendDataBackToParent(_ data: Data) {
+        //usually this delegate takes care of users actions and requests through UI
+        //do something with the data or message send back from View
+    }
 }
 
 
 //MARK: - Private Zone
 private extension FirstSceneViewController {
-  
-  func displayDoSomething(_ viewModel: NSObject) {
-    print("Use the mainView to present the viewModel")
-    //example of using router
-    router.routeTo(.xScene(22))
-  }
-  
-  func doSomethingWithInteractor(dataSource: FirstSceneModel.DataSource) {
-    interactor.doRequest(.doSomething(dataSource.testVariable))
-  }
+    
+    func displayDoSomething(_ viewModel: NSObject) {
+        print("Use the mainView to present the viewModel")
+        //example of using router
+        router.routeTo(.xScene(22))
+    }
+    
+    func doSomethingWithInteractor(dataSource: FirstSceneModel.DataSource) {
+        interactor.doRequest(.doSomething(dataSource.testVariable))
+    }
 }
 

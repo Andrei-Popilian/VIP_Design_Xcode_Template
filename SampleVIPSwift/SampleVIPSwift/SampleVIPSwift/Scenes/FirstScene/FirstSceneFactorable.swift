@@ -12,6 +12,9 @@
 
 import UIKit
 
+
+typealias SceneFactorable = Factorable & ServicesFactorable
+
 extension AppInjector {
     
     struct FirstSceneInjector {
@@ -20,14 +23,9 @@ extension AppInjector {
     }
 }
 
-extension AppInjector.FirstSceneInjector: FirstSceneFactorable  {}
+extension AppInjector.FirstSceneInjector: FirstSceneFactorable {}
 
-protocol FirstSceneFactorable: Factorable, ServicesFactorable {
-
-    func makeInteractor(viewController: FirstSceneDisplayLogic?, dataSource: FirstSceneModel.DataSource) -> FirstSceneInteractable
-    func makePresenter(_ viewController: FirstSceneDisplayLogic?) -> FirstScenePresentationLogic
-    func makeRouter(viewController: UIViewController?) -> FirstSceneRouting
-}
+protocol FirstSceneFactorable: SceneFactorable {}
 
 extension FirstSceneFactorable {
     
