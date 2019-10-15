@@ -16,7 +16,7 @@ typealias FirstSceneInteractable = FirstSceneBusinessLogic & FirstSceneDataStore
 
 protocol FirstSceneBusinessLogic {
     
-    func doRequest(_ request: FirstSceneModel.Requests)
+    func doRequest(_ request: FirstSceneModel.Request)
 }
 
 protocol FirstSceneDataStore {
@@ -41,7 +41,7 @@ final class FirstSceneInteractor<Factory>: Interactable, FirstSceneDataStore whe
 //MARK: - FirstSceneBusinessLogic
 extension FirstSceneInteractor: FirstSceneBusinessLogic {
     
-    func doRequest(_ request: FirstSceneModel.Requests) {
+    func doRequest(_ request: FirstSceneModel.Request) {
         
         switch request {
             

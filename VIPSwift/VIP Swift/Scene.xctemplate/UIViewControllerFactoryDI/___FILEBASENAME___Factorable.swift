@@ -22,7 +22,7 @@ extension AppInjector {
 
 extension AppInjector.___VARIABLE_sceneName___Injector: ___VARIABLE_sceneName___Factorable  {}
 
-protocol ___VARIABLE_sceneName___Factorable: Factorable, ServicesFactorable {
+protocol ___VARIABLE_sceneName___Factorable: Factorable, ___VARIABLE_sceneName___ServicesFactorable {
 
     func makeInteractor(viewController: ___VARIABLE_sceneName___DisplayLogic?, dataSource: ___VARIABLE_sceneName___Model.DataSource) -> ___VARIABLE_sceneName___Interactable
     func makePresenter(_ viewController: ___VARIABLE_sceneName___DisplayLogic?) -> ___VARIABLE_sceneName___PresentationLogic
@@ -45,12 +45,12 @@ extension ___VARIABLE_sceneName___Factorable {
 }
 
 // copy this on a separate file
-protocol ServicesFactorable {
+protocol ___VARIABLE_sceneName___ServicesFactorable {
     
     //func makeXService() -> xService
 }
 
-extension ServicesFactorable {
+extension ___VARIABLE_sceneName___ServicesFactorable {
     
 //    func makeXService() -> xService {
 //        xService()

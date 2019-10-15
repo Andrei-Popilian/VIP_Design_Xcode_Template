@@ -14,7 +14,7 @@ import UIKit
 
 protocol ___VARIABLE_sceneName___Routing {
     
-     func routeTo(_ routes: ___VARIABLE_sceneName___Model.Routes)
+     func routeTo(_ routes: ___VARIABLE_sceneName___Model.Route)
 }
 
 final class ___VARIABLE_sceneName___Router: Routeable  {
@@ -29,9 +29,9 @@ final class ___VARIABLE_sceneName___Router: Routeable  {
 
 //MARK: - ___VARIABLE_sceneName___Routing
 extension ___VARIABLE_sceneName___Router: ___VARIABLE_sceneName___Routing {
-     func routeTo(_ routes: ___VARIABLE_sceneName___Model.Routes) {
+     func routeTo(_ route: ___VARIABLE_sceneName___Model.Route) {
         
-        switch routes {
+        switch route {
             
         case .xScene(let data):
             showXSceneBy(data)

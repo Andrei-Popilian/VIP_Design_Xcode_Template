@@ -14,7 +14,7 @@ import UIKit
 
 protocol ___VARIABLE_sceneName___DisplayLogic where Self: UIViewController {
     
-    func displayViewModel(_ viewModel: ___VARIABLE_sceneName___Model.ViewModels)
+    func displayViewModel(_ viewModel: ___VARIABLE_sceneName___Model.ViewModel)
 }
 
 final class ___VARIABLE_sceneName___ViewController<Factory>: UIViewController, Displayable where Factory: ___VARIABLE_sceneName___Factorable {
@@ -56,7 +56,7 @@ final class ___VARIABLE_sceneName___ViewController<Factory>: UIViewController, D
 //MARK: - ___VARIABLE_sceneName___DisplayLogic
 extension ___VARIABLE_sceneName___ViewController: ___VARIABLE_sceneName___DisplayLogic {
     
-    func displayViewModel(_ viewModel: ___VARIABLE_sceneName___Model.ViewModels) {
+    func displayViewModel(_ viewModel: ___VARIABLE_sceneName___Model.ViewModel) {
         
         switch viewModel {
             

@@ -16,14 +16,14 @@ typealias ___VARIABLE_sceneName___Interactable = ___VARIABLE_sceneName___Busines
 
 protocol ___VARIABLE_sceneName___BusinessLogic {
     
-    func doRequest(_ request: ___VARIABLE_sceneName___Model.Requests)
+    func doRequest(_ request: ___VARIABLE_sceneName___Model.Request)
 }
 
 protocol ___VARIABLE_sceneName___DataStore {
     var dataSource: ___VARIABLE_sceneName___Model.DataSource { get }
 }
 
-final class ___VARIABLE_sceneName___Interactor<Factory>: Interactable, ___VARIABLE_sceneName___DataStore where Factory: ServicesFactorable & ___VARIABLE_sceneName___Factorable {
+final class ___VARIABLE_sceneName___Interactor<Factory>: Interactable, ___VARIABLE_sceneName___DataStore where Factory: ___VARIABLE_sceneName___ServicesFactorable & ___VARIABLE_sceneName___Factorable {
     
     var dataSource: ___VARIABLE_sceneName___Model.DataSource
     
@@ -41,7 +41,7 @@ final class ___VARIABLE_sceneName___Interactor<Factory>: Interactable, ___VARIAB
 //MARK: - ___VARIABLE_sceneName___BusinessLogic
 extension ___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___BusinessLogic {
     
-    func doRequest(_ request: ___VARIABLE_sceneName___Model.Requests) {
+    func doRequest(_ request: ___VARIABLE_sceneName___Model.Request) {
         
         switch request {
             

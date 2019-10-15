@@ -15,19 +15,19 @@ import Foundation
 
 struct ___VARIABLE_sceneName___Model {
     
-    enum Requests {
+    enum Request {
         case doSomething(_ item: Int)
     }
     
-    enum Responses {
+    enum Response {
         case doSomething(_ newItem: Int, _ isItem: Bool)
     }
     
-    enum ViewModels {
+    enum ViewModel {
         case doSomething(_ viewModelData: NSObject)
     }
     
-    enum Routes {
+    enum Route {
         case xScene(_ xData: Int)
     }
     

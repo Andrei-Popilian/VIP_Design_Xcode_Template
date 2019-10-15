@@ -13,7 +13,7 @@
 import Foundation
 
 protocol FirstScenePresentationLogic {
-    func presentResponse(_ response: FirstSceneModel.Responses)
+    func presentResponse(_ response: FirstSceneModel.Response)
 }
 
 final class FirstScenePresenter: Presentable {
@@ -28,7 +28,7 @@ final class FirstScenePresenter: Presentable {
 //MARK: - FirstScenePresentationLogic
 extension FirstScenePresenter: FirstScenePresentationLogic {
     
-    func presentResponse(_ response: FirstSceneModel.Responses) {
+    func presentResponse(_ response: FirstSceneModel.Response) {
         
         switch response {
             

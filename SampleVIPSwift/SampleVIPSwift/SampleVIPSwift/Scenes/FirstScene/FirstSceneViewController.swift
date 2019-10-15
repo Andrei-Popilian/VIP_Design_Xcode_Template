@@ -14,7 +14,7 @@ import UIKit
 
 protocol FirstSceneDisplayLogic where Self: UIViewController {
   
-  func displayViewModel(_ viewModel: FirstSceneModel.ViewModels)
+  func displayViewModel(_ viewModel: FirstSceneModel.ViewModel)
 }
 
 final class FirstSceneViewController<Factory>: UIViewController, Displayable where Factory: FirstSceneFactorable {
@@ -67,7 +67,7 @@ final class FirstSceneViewController<Factory>: UIViewController, Displayable whe
 //MARK: - FirstSceneDisplayLogic
 extension FirstSceneViewController: FirstSceneDisplayLogic {
   
-  func displayViewModel(_ viewModel: FirstSceneModel.ViewModels) {
+  func displayViewModel(_ viewModel: FirstSceneModel.ViewModel) {
     
     switch viewModel {
       

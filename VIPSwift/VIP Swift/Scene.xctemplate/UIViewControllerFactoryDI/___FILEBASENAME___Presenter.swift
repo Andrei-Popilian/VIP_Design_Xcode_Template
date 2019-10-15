@@ -13,7 +13,7 @@
 import Foundation
 
 protocol ___VARIABLE_sceneName___PresentationLogic {
-    func presentResponse(_ response: ___VARIABLE_sceneName___Model.Responses)
+    func presentResponse(_ response: ___VARIABLE_sceneName___Model.Response)
 }
 
 final class ___VARIABLE_sceneName___Presenter: Presentable {
@@ -28,7 +28,7 @@ final class ___VARIABLE_sceneName___Presenter: Presentable {
 //MARK: - ___VARIABLE_sceneName___PresentationLogic
 extension ___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___PresentationLogic {
     
-    func presentResponse(_ response: ___VARIABLE_sceneName___Model.Responses) {
+    func presentResponse(_ response: ___VARIABLE_sceneName___Model.Response) {
         
         switch response {
             
