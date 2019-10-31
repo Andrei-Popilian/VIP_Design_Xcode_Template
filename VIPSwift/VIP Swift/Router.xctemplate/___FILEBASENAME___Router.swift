@@ -15,6 +15,7 @@ import UIKit
 protocol ___VARIABLE_sceneName___Routing {
     
     func routeTo(_ route: ___VARIABLE_sceneName___Model.Route)
+    func dismiss___VARIABLE_sceneName___Scene()
 }
 
 final class ___VARIABLE_sceneName___Router: Routeable  {
@@ -29,6 +30,7 @@ final class ___VARIABLE_sceneName___Router: Routeable  {
 
 //MARK: - ___VARIABLE_sceneName___Routing
 extension ___VARIABLE_sceneName___Router: ___VARIABLE_sceneName___Routing {
+  
     func routeTo(_ route: ___VARIABLE_sceneName___Model.Route) {
         
         switch route {
@@ -36,6 +38,10 @@ extension ___VARIABLE_sceneName___Router: ___VARIABLE_sceneName___Routing {
         case .xScene(let data):
             showXSceneBy(data)
         }
+    }
+  
+    func dismiss___VARIABLE_sceneName___Scene() {
+      viewController?.dismiss(animated: true)
     }
 }
 

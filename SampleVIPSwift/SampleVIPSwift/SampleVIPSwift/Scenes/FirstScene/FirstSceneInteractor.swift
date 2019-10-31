@@ -23,7 +23,7 @@ protocol FirstSceneDataStore {
     var dataSource: FirstSceneModel.DataSource { get }
 }
 
-final class FirstSceneInteractor<Factory>: Interactable, FirstSceneDataStore where Factory: ServicesFactorable & FirstSceneFactorable {
+final class FirstSceneInteractor<Factory>: Interactable, FirstSceneDataStore where Factory: FirstSceneFactorable {
     
     var dataSource: FirstSceneModel.DataSource
     

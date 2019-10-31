@@ -14,7 +14,7 @@ import UIKit
 
 protocol FirstSceneRouting {
     
-    func routeTo(_ routes: FirstSceneModel.Route)
+    func routeTo(_ route: FirstSceneModel.Route)
 }
 
 final class FirstSceneRouter: Routeable  {
@@ -29,9 +29,10 @@ final class FirstSceneRouter: Routeable  {
 
 //MARK: - FirstSceneRouting
 extension FirstSceneRouter: FirstSceneRouting {
-     func routeTo(_ routes: FirstSceneModel.Route) {
+
+     func routeTo(_ route: FirstSceneModel.Route) {
         
-        switch routes {
+        switch route {
             
         case .xScene(let data):
             showXSceneBy(data)

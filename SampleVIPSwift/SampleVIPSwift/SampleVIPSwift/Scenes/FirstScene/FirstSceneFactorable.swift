@@ -22,7 +22,7 @@ extension AppInjector {
 
 extension AppInjector.FirstSceneInjector: FirstSceneFactorable  {}
 
-protocol FirstSceneFactorable: Factorable, ServicesFactorable {
+protocol FirstSceneFactorable: Factorable {
 
     func makeInteractor(viewController: FirstSceneDisplayLogic?, dataSource: FirstSceneModel.DataSource) -> FirstSceneInteractable
     func makePresenter(_ viewController: FirstSceneDisplayLogic?) -> FirstScenePresentationLogic
