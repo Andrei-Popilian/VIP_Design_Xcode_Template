@@ -13,33 +13,33 @@
 import XCTest
 @testable import SampleVIPSwift
 
-struct FirstSceneInjectorTest: Injectable {
-  static let shared: FirstSceneInjectorTest = FirstSceneInjectorTest()
+struct FirstInjectorTest: Injectable {
+  static let shared: FirstInjectorTest = FirstInjectorTest()
   private init() {}
 }
 
 //use the factory Dependency injection and implement the factorable protocol
-extension FirstSceneInjectorTest: FirstSceneFactorable, ServicesFactorable {
+extension FirstInjectorTest: FirstFactorable, FirstServicesFactorable {
   
-  func makeRouter(viewController: UIViewController?) -> FirstSceneRouting {
-    let router = FirstSceneRouter(viewController)
+  func makeRouter(viewController: UIViewController?) -> FirstRouting {
+    let router = FirstRouter(viewController)
     //custom implementation for this test
     return router
   }
   
 }
 
-class FirstSceneSceneTests: XCTestCase {
+class FirstSceneTests: XCTestCase {
   
-  var vc: FirstSceneViewController<FirstSceneInjectorTest>!
-  var customDataSource: FirstSceneModel.DataSource!
+  var vc: FirstViewController<FirstInjectorTest>!
+  var customDataSource: FirstModel.DataSource!
   
   override func setUp() {
     
-    customDataSource = FirstSceneModel.DataSource(testVariable: 29)
-    let customView = FirstSceneView()
+    customDataSource = FirstModel.DataSource(testVariable: 29)
+    let customView = FirstView()
     
-    vc = FirstSceneViewController(factory: FirstSceneInjectorTest.shared, mainView: customView, dataSource: customDataSource)
+    vc = FirstViewController(factory: FirstInjectorTest.shared, mainView: customView, dataSource: customDataSource)
   }
   
   override func tearDown() { }
