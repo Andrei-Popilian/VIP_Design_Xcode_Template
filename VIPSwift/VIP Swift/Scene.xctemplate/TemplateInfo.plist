@@ -156,17 +156,34 @@
 		</dict>
 		<dict>
 			<key>Identifier</key>
-			<string>FactoryDI</string>
+			<string>VIPAddition</string>
 			<key>Name</key>
-			<string>Add Factory Dependency Injection</string>
+			<string>Addition:</string>
 			<key>Description</key>
-			<string>To create the Scene implementation using Factory design pattern as Dependency Injection</string>
+			<string>Current additions available for VIP Architecture</string>
+			<key>Type</key>
+			<string>popup</string>
+			<key>Default</key>
+			<string>Factory Dependency Injection</string>
+			<key>Required</key>
+			<true/>
+			<key>Values</key>
+			<array>
+				<string>Factory Dependency Injection</string>
+				<string>None</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Identifier</key>
+			<string>VIPArchitecture</string>
+			<key>Name</key>
+			<string>Add base VIP architecture protocols</string>
+			<key>Description</key>
+			<string>Adds 1 or 2 more .swift files, which contains base generic protocols for the VIP architecture</string>
 			<key>Type</key>
 			<string>checkbox</string>
 			<key>Default</key>
-			<string>true</string>
-			<key>NotPersisted</key>
-			<string>YES</string>
+			<false/>
 		</dict>
 	</array>
 	<key>Platforms</key>

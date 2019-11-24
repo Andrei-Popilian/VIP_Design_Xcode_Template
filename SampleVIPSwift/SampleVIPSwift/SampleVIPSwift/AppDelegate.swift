@@ -15,8 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
-    let factoryInjector = AppInjector.FirstInjector.shared
-    let firstSceneVC = FirstViewController(factory: factoryInjector, mainView: FirstView(), dataSource: FirstModel.DataSource(testVariable: 2))
+    let factoryInjector = AppInjector.LoginInjector.shared
+    let firstSceneVC = LoginViewController(factory: factoryInjector, mainView: LoginView(), dataSource: LoginModel.DataSource(testVariable: 2))
     window = UIWindow.init(frame: UIScreen.main.bounds)
     
     window?.makeKeyAndVisible()
