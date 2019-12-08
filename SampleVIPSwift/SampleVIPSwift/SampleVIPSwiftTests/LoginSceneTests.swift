@@ -13,7 +13,7 @@
 import XCTest
 @testable import SampleVIPSwift
 
-struct LoginInjectorTest: Injectable {
+struct LoginInjectorTest {
   static let shared: LoginInjectorTest = LoginInjectorTest()
   private init() {}
 }
@@ -31,12 +31,12 @@ extension LoginInjectorTest: LoginFactorable, LoginServicesFactorable {
 
 class LoginSceneTests: XCTestCase {
   
-  var vc: LoginViewController<LoginInjectorTest>!
+  var vc: LoginViewController!
   var customDataSource: LoginModel.DataSource!
   
   override func setUp() {
     
-    customDataSource = LoginModel.DataSource(testVariable: 29)
+    customDataSource = LoginModel.DataSource()
     let customView = LoginView()
     
     vc = LoginViewController(factory: LoginInjectorTest.shared, mainView: customView, dataSource: customDataSource)
@@ -46,12 +46,16 @@ class LoginSceneTests: XCTestCase {
   
   func testCustomInteractorDataSourceShouldChange() {
     
-    XCTAssertTrue(customDataSource.testVariable == 29, "Test Variable should be 29")
+    XCTAssertTrue(customDataSource.userId == nil, "UserId should be nil at this time")
     
-    vc.doSomethingToInteractor()
+    vc.doAuthentication()
     
-    let currentDataSource = vc.getCurrentDataSource()
     
-    XCTAssertTrue(currentDataSource.testVariable == 30, "Test Variable should be 30 After")
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute:  {
+      
+      let currentDataSource = self.vc.getCurrentDataSource()
+      
+      XCTAssertTrue(currentDataSource.userId == "88f48f34jf3498fnvb", "UserId should be 88f48f34jf3498fnvb After authentication")
+    })
   }
 }

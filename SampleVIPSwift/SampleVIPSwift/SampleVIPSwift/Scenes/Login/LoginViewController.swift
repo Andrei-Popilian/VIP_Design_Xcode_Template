@@ -17,9 +17,11 @@ protocol LoginDisplayLogic where Self: UIViewController {
   func displayViewModel(_ viewModel: LoginModel.ViewModel)
 }
 
-final class LoginViewController<Factory>: UIViewController, Displayable where Factory: LoginFactorable {
+final class LoginViewController: UIViewController, Displayable {
   
-  private let factory: Factory
+  typealias LoginFactory = LoginInteractorFactorable & LoginRouterFactorable
+  
+  private let factory: LoginFactory
   private let mainView: LoginView
   private var interactor: LoginInteractable!
   
@@ -27,19 +29,14 @@ final class LoginViewController<Factory>: UIViewController, Displayable where Fa
     factory.makeRouter(viewController: self)
   }()
   
-  init(factory: Factory, mainView: LoginView, dataSource: LoginModel.DataSource) {
+  init(factory: LoginFactory, mainView: LoginView, dataSource: LoginModel.DataSource) {
     self.factory = factory
     self.mainView = mainView
     
     super.init(nibName: nil, bundle: nil)
     self.interactor = factory.makeInteractor(viewController: self, dataSource: dataSource)
   }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    //interactor.doSomething(item: 22)
-  }
-  
+
   override func loadView() {
     mainView.delegate = self
     view = mainView
@@ -54,9 +51,9 @@ final class LoginViewController<Factory>: UIViewController, Displayable where Fa
     return interactor.dataSource
   }
   
-  //only for test purpose
-  func doSomethingToInteractor() {
-     doSomethingWithInteractor(dataSource: interactor.dataSource)
+  //Only for test purpose
+  func doAuthentication() {
+    doAuthentication(withEmail: "email", andPassword: "password")
   }
 }
 
@@ -68,8 +65,8 @@ extension LoginViewController: LoginDisplayLogic {
     DispatchQueue.main.async {
       switch viewModel {
         
-      case .doSomething(let viewModel):
-        self.displayDoSomething(viewModel)
+      case .authenticate(let userId):
+        self.displayAuthenticationSuccess(withUserId: userId)
       }
     }
   }
@@ -90,14 +87,14 @@ extension LoginViewController: LoginViewDelegate {
 //MARK: - Private Zone
 private extension LoginViewController {
   
-  func displayDoSomething(_ viewModel: NSObject) {
+  func displayAuthenticationSuccess(withUserId userId: String) {
     print("Use the mainView to present the viewModel")
     //example of using router
-    router.routeTo(.xScene(xData: 22))
+    router.routeTo(.showAuthenticateSuccess(withUserId: userId))
   }
   
-  func doSomethingWithInteractor(dataSource: LoginModel.DataSource) {
-    interactor.doRequest(.doSomething(item: dataSource.testVariable))
+  func doAuthentication(withEmail email: String, andPassword password: String) {
+    interactor.doRequest(.authenticate(withEmail: email, andPassword: password))
   }
 }
 

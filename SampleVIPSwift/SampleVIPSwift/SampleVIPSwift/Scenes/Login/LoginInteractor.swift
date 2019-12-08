@@ -23,14 +23,16 @@ protocol LoginDataStore {
   var dataSource: LoginModel.DataSource { get }
 }
 
-final class LoginInteractor<Factory>: Interactable, LoginDataStore where Factory: LoginServicesFactorable & LoginFactorable {
+final class LoginInteractor: Interactable, LoginDataStore {
+  
+  typealias LoginFactor = LoginPresenterFactorable & LoginServicesFactorable
   
   var dataSource: LoginModel.DataSource
   
-  private var factory: Factory
+  private var factory: LoginFactor
   private var presenter: LoginPresentationLogic
   
-  init(factory: Factory, viewController: LoginDisplayLogic?, dataSource: LoginModel.DataSource) {
+  init(factory: LoginFactor, viewController: LoginDisplayLogic?, dataSource: LoginModel.DataSource) {
     self.factory = factory
     self.dataSource = dataSource
     self.presenter = factory.makePresenter(viewController)
@@ -46,8 +48,8 @@ extension LoginInteractor: LoginBusinessLogic {
       
       switch request {
         
-      case .doSomething(let item):
-        self.doSomething(item)
+      case .authenticate(let email, let password):
+        self.doAuthentication(withEmail: email, andPassword: password)
       }
     }
   }
@@ -57,17 +59,24 @@ extension LoginInteractor: LoginBusinessLogic {
 //MARK: - Private Zone
 private extension LoginInteractor {
   
-  func doSomething(_ item: Int) {
+  
+  func doAuthentication(withEmail email: String, andPassword password: String) {
     
-    //construct the Service right before using it
-    //let serviceX = factory.makeXService()
+    let authService = factory.makeAuthService()
     
-    // get new data async or sync
-    //let newData = serviceX.getNewData()
-    
-    dataSource.testVariable = item + 1
-
-    presenter.presentResponse(.doSomething(newItem: item + 1, isItem: true))
-
+    authService.doAuth(withEmail: email, password: password, completion: { [weak self] result in
+      guard let self = self else { return }
+      
+      switch result {
+        
+      case .failure(let error):
+        print(error)
+        //do error handling or pass to error handler
+        
+      case .success(let userId):
+        self.dataSource.userId = userId
+        self.presenter.presentResponse(.authenticate(withUserId: userId))
+      }
+    })
   }
 }

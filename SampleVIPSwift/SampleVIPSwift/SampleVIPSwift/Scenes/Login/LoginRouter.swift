@@ -37,8 +37,8 @@ extension LoginRouter: LoginRouting {
       case .dismissLoginScene:
         self.dismissLoginScene()
         
-      case .xScene(let data):
-        self.showXSceneBy(data)
+      case .showAuthenticateSuccess(let userId):
+        self.showXSceneBy(userId)
       }
     }
   }
@@ -52,7 +52,7 @@ private extension LoginRouter {
     viewController?.dismiss(animated: true)
   }
   
-  func showXSceneBy(_ data: Int) {
-    print("will show the next screen")
+  func showXSceneBy(_ userId: String) {
+    print("will show the next screen and pass the userId: \(userId)")
   }
 }

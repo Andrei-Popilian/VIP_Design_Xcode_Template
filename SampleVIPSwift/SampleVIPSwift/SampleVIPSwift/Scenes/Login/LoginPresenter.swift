@@ -32,8 +32,8 @@ extension LoginPresenter: LoginPresentationLogic {
     
     switch response {
       
-    case .doSomething(let theNewItem, let isItem):
-      presentDoSomething(theNewItem, isItem)
+    case .authenticate(let userId):
+      presentAuthenticateSuccess(withUserId: userId)
     }
   }
 }
@@ -42,10 +42,9 @@ extension LoginPresenter: LoginPresentationLogic {
 //MARK: - Private Zone
 private extension LoginPresenter {
   
-  func presentDoSomething(_ newItem: Int, _ isItem: Bool) {
+  func presentAuthenticateSuccess(withUserId userId: String) {
     
     //prepare data for display and send it further
-    
-    viewController?.displayViewModel(.doSomething(viewModelData: NSObject()))
+    viewController?.displayViewModel(.authenticate(withUserId: userId))
   }
 }

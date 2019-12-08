@@ -16,23 +16,23 @@ import Foundation
 struct LoginModel {
   
   enum Request {
-    case doSomething(item: Int)
+    case authenticate(withEmail: String, andPassword: String)
   }
   
   enum Response {
-    case doSomething(newItem: Int, isItem: Bool)
+    case authenticate(withUserId: String)
   }
   
   enum ViewModel {
-    case doSomething(viewModelData: NSObject)
+    case authenticate(withUserId: String)
   }
   
   enum Route {
     case dismissLoginScene
-    case xScene(xData: Int)
+    case showAuthenticateSuccess(withUserId: String)
   }
   
   struct DataSource: DataSourceable {
-    var testVariable: Int
+    var userId: String?
   }
 }

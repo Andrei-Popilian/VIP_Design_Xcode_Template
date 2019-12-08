@@ -8,34 +8,38 @@
 
 import UIKit
 
+struct AppInjector {}
+
+protocol Displayable where Self: UIViewController  {
+  
+  associatedtype Factory
+  associatedtype DataSource: DataSourceable
+  associatedtype View: UIView
+  
+  init(factory: Factory, mainView: View, dataSource: DataSource)
+}
+
 protocol Interactable {
-    
-    associatedtype Factory: Factorable
-    associatedtype DataSource: DataSourceable
-    associatedtype DisplayLogic
-    
-    init(factory: Factory, viewController: DisplayLogic?, dataSource: DataSource)
+  
+  associatedtype Factory
+  associatedtype DataSource: DataSourceable
+  associatedtype DisplayLogic
+  
+  init(factory: Factory, viewController: DisplayLogic?, dataSource: DataSource)
 }
 
 protocol Presentable {
-    
-    associatedtype DisplayLogic
-    
-    init(_ viewController: DisplayLogic?)
+  
+  associatedtype DisplayLogic
+  
+  init(_ viewController: DisplayLogic?)
 }
 
-protocol Displayable where Self: UIViewController  {
-    
-    associatedtype Factory: Factorable
-    associatedtype DataSource: DataSourceable
-    associatedtype View: UIView
-    
-    init(factory: Factory, mainView: View, dataSource: DataSource)
+protocol Routeable {
+  
+  init(_ viewController: UIViewController?)
 }
 
 protocol DataSourceable {}
 
-protocol Routeable {
-    
-    init(_ viewController: UIViewController?)
-}
+
