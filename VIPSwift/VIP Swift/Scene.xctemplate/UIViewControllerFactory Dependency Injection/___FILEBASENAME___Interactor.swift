@@ -23,14 +23,16 @@ protocol ___VARIABLE_sceneName___DataStore {
   var dataSource: ___VARIABLE_sceneName___Model.DataSource { get }
 }
 
-final class ___VARIABLE_sceneName___Interactor<Factory>: Interactable, ___VARIABLE_sceneName___DataStore where Factory: ___VARIABLE_sceneName___ServicesFactorable & ___VARIABLE_sceneName___Factorable {
+final class ___VARIABLE_sceneName___Interactor: Interactable, ___VARIABLE_sceneName___DataStore {
+  
+  typealias ___VARIABLE_sceneName___Factory = ___VARIABLE_sceneName___PresenterFactorable & ___VARIABLE_sceneName___ServicesFactorable
   
   var dataSource: ___VARIABLE_sceneName___Model.DataSource
   
-  private var factory: Factory
+  private var factory: ___VARIABLE_sceneName___Factory
   private var presenter: ___VARIABLE_sceneName___PresentationLogic
   
-  init(factory: Factory, viewController: ___VARIABLE_sceneName___DisplayLogic?, dataSource: ___VARIABLE_sceneName___Model.DataSource) {
+  init(factory: ___VARIABLE_sceneName___Factory, viewController: ___VARIABLE_sceneName___DisplayLogic?, dataSource: ___VARIABLE_sceneName___Model.DataSource) {
     self.factory = factory
     self.dataSource = dataSource
     self.presenter = factory.makePresenter(viewController)

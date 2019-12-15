@@ -25,14 +25,14 @@ protocol LoginDataStore {
 
 final class LoginInteractor: Interactable, LoginDataStore {
   
-  typealias LoginFactor = LoginPresenterFactorable & LoginServicesFactorable
+  typealias LoginFactory = LoginPresenterFactorable & LoginServicesFactorable
   
   var dataSource: LoginModel.DataSource
   
-  private var factory: LoginFactor
+  private var factory: LoginFactory
   private var presenter: LoginPresentationLogic
   
-  init(factory: LoginFactor, viewController: LoginDisplayLogic?, dataSource: LoginModel.DataSource) {
+  init(factory: LoginFactory, viewController: LoginDisplayLogic?, dataSource: LoginModel.DataSource) {
     self.factory = factory
     self.dataSource = dataSource
     self.presenter = factory.makePresenter(viewController)

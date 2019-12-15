@@ -22,10 +22,18 @@ extension AppInjector {
 
 extension AppInjector.___VARIABLE_sceneName___Injector: ___VARIABLE_sceneName___Factorable  {}
 
-protocol ___VARIABLE_sceneName___Factorable: Factorable, ___VARIABLE_sceneName___ServicesFactorable {
-  
+protocol ___VARIABLE_sceneName___Factorable: ___VARIABLE_sceneName___InteractorFactorable, ___VARIABLE_sceneName___PresenterFactorable,
+                                             ___VARIABLE_sceneName___RouterFactorable, ___VARIABLE_sceneName___ServicesFactorable { }
+
+protocol ___VARIABLE_sceneName___InteractorFactorable {
   func makeInteractor(viewController: ___VARIABLE_sceneName___DisplayLogic?, dataSource: ___VARIABLE_sceneName___Model.DataSource) -> ___VARIABLE_sceneName___Interactable
+}
+
+protocol ___VARIABLE_sceneName___PresenterFactorable {
   func makePresenter(_ viewController: ___VARIABLE_sceneName___DisplayLogic?) -> ___VARIABLE_sceneName___PresentationLogic
+}
+
+protocol ___VARIABLE_sceneName___RouterFactorable {
   func makeRouter(viewController: UIViewController?) -> ___VARIABLE_sceneName___Routing
 }
 

@@ -17,7 +17,7 @@ protocol LoginDisplayLogic where Self: UIViewController {
   func displayViewModel(_ viewModel: LoginModel.ViewModel)
 }
 
-final class LoginViewController: UIViewController, Displayable {
+class LoginViewController: UIViewController, Displayable, LoginDisplayLogic {
   
   typealias LoginFactory = LoginInteractorFactorable & LoginRouterFactorable
   
@@ -29,12 +29,12 @@ final class LoginViewController: UIViewController, Displayable {
     factory.makeRouter(viewController: self)
   }()
   
-  init(factory: LoginFactory, mainView: LoginView, dataSource: LoginModel.DataSource) {
+  required init(factory: LoginFactory, mainView: LoginView, dataSource: LoginModel.DataSource) {
     self.factory = factory
     self.mainView = mainView
     
     super.init(nibName: nil, bundle: nil)
-    self.interactor = factory.makeInteractor(viewController: self, dataSource: dataSource)
+    self.interactor = factory.makeInteractor(factory: factory as! LoginInteractor.LoginFactory, viewController: self, dataSource: dataSource)
   }
 
   override func loadView() {
@@ -55,22 +55,24 @@ final class LoginViewController: UIViewController, Displayable {
   func doAuthentication() {
     doAuthentication(withEmail: "email", andPassword: "password")
   }
-}
-
-
-//MARK: - LoginDisplayLogic
-extension LoginViewController: LoginDisplayLogic {
   
   func displayViewModel(_ viewModel: LoginModel.ViewModel) {
-    DispatchQueue.main.async {
-      switch viewModel {
-        
-      case .authenticate(let userId):
-        self.displayAuthenticationSuccess(withUserId: userId)
-      }
-    }
-  }
+     DispatchQueue.main.async {
+       switch viewModel {
+         
+       case .authenticate(let userId):
+         self.displayAuthenticationSuccess(withUserId: userId)
+       }
+     }
+   }
 }
+
+
+////MARK: - LoginDisplayLogic
+//extension LoginViewController: LoginDisplayLogic {
+//
+//
+//}
 
 
 //MARK: - LoginViewDelegate

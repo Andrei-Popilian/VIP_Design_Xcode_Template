@@ -13,13 +13,15 @@
 import Foundation
 
 protocol LoginPresentationLogic {
+  
   func presentResponse(_ response: LoginModel.Response)
 }
 
-final class LoginPresenter: Presentable {
+class LoginPresenter: Presentable {
+  
   private weak var viewController: LoginDisplayLogic?
   
-  init(_ viewController: LoginDisplayLogic?) {
+  required init(_ viewController: LoginDisplayLogic?) {
     self.viewController = viewController
   }
 }
@@ -45,6 +47,9 @@ private extension LoginPresenter {
   func presentAuthenticateSuccess(withUserId userId: String) {
     
     //prepare data for display and send it further
-    viewController?.displayViewModel(.authenticate(withUserId: userId))
+    //for test purpose we will change the userId bit
+    let newUserID = userId + "test"
+    
+    viewController?.displayViewModel(.authenticate(withUserId: newUserID))
   }
 }

@@ -25,7 +25,9 @@ extension AppInjector.LoginInjector: LoginFactorable  {}
 protocol LoginFactorable: LoginInteractorFactorable, LoginPresenterFactorable, LoginRouterFactorable, LoginServicesFactorable { }
 
 protocol LoginInteractorFactorable {
-  func makeInteractor(viewController: LoginDisplayLogic?, dataSource: LoginModel.DataSource) -> LoginInteractable
+  func makeInteractor(factory: LoginPresenterFactorable & LoginServicesFactorable,
+                      viewController: LoginDisplayLogic?,
+                      dataSource: LoginModel.DataSource) -> LoginInteractable
 }
 
 protocol LoginPresenterFactorable {
@@ -39,8 +41,11 @@ protocol LoginRouterFactorable {
 
 extension LoginFactorable {
   
-  func makeInteractor(viewController: LoginDisplayLogic?, dataSource: LoginModel.DataSource) -> LoginInteractable {
-    LoginInteractor(factory: AppInjector.LoginInjector.shared, viewController: viewController, dataSource: dataSource)
+  func makeInteractor(factory: LoginPresenterFactorable & LoginServicesFactorable,
+                      viewController: LoginDisplayLogic?,
+                      dataSource: LoginModel.DataSource) -> LoginInteractable {
+    
+    LoginInteractor(factory: factory, viewController: viewController, dataSource: dataSource)
   }
   
   func makePresenter(_ viewController: LoginDisplayLogic?) -> LoginPresentationLogic {

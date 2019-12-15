@@ -17,9 +17,11 @@ protocol ___VARIABLE_sceneName___DisplayLogic where Self: UIViewController {
   func displayViewModel(_ viewModel: ___VARIABLE_sceneName___Model.ViewModel)
 }
 
-final class ___VARIABLE_sceneName___ViewController<Factory>: UIViewController, Displayable where Factory: ___VARIABLE_sceneName___Factorable {
+final class ___VARIABLE_sceneName___ViewController: UIViewController, Displayable {
   
-  private let factory: Factory
+  private typealias LoginFactory = LoginInteractorFactorable & LoginRouterFactorable
+
+  private let factory: LoginFactory
   private let mainView: ___VARIABLE_sceneName___View
   private var interactor: ___VARIABLE_sceneName___Interactable!
   
@@ -27,7 +29,7 @@ final class ___VARIABLE_sceneName___ViewController<Factory>: UIViewController, D
     factory.makeRouter(viewController: self)
   }()
   
-  init(factory: Factory, mainView: ___VARIABLE_sceneName___View, dataSource: ___VARIABLE_sceneName___Model.DataSource) {
+  init(factory: LoginFactory, mainView: ___VARIABLE_sceneName___View, dataSource: ___VARIABLE_sceneName___Model.DataSource) {
     self.factory = factory
     self.mainView = mainView
     

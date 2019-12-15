@@ -10,10 +10,14 @@ import Foundation
 
 final class AuthService {
   
-  func doAuth(withEmail email: String, password: String, completion: (Result<String, Error>) -> Void) {
+  func doAuth(withEmail email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
     
     //doAuthRequest using other services injected through init
     let userId = "88f48f34jf3498fnvb"
-    completion(.success(userId))
+    
+    //simulate a server request
+    DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 2, execute: {
+      completion(.success(userId))
+    })
   }
 }
