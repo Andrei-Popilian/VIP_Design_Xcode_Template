@@ -12,38 +12,37 @@ import XCTest
 
 final class LoginInteractorTests: XCTestCase {
   
-  private static var presenter: LoginTestPresenter!
-  private static var authExpectation: XCTestExpectation?
-  
+  private static var presenter: LoginPresenterSpy!
   private var interactor: LoginInteractor!
   
-  struct LoginInjectorTest: LoginFactorable {
+  struct LoginTestInjector: LoginFactorable {
     
     func makePresenter(_ viewController: LoginDisplayLogic?) -> LoginPresentationLogic {
-      presenter = LoginTestPresenter()
+      presenter = LoginPresenterSpy()
       return presenter
     }
   }
   
-  final class LoginTestPresenter: LoginPresentationLogic {
+  final class LoginPresenterSpy: LoginPresentationLogic {
+    var authExpectation: XCTestExpectation!
+    var resultUserId: String!
     
     func presentResponse(_ response: LoginModel.Response) {
       
       switch response {
       case .authenticate(let userId):
-        print(userId)
-        authExpectation?.fulfill()
+        resultUserId = userId
+        authExpectation.fulfill()
       }
     }
   }
   
   override func setUp() {
-    interactor = LoginInteractor(factory: LoginInjectorTest(), viewController: nil, dataSource: LoginModel.DataSource())
+    interactor = LoginInteractor(factory: LoginTestInjector(), viewController: nil, dataSource: LoginModel.DataSource())
   }
   
   override func tearDown() {
     LoginInteractorTests.presenter = nil
-    LoginInteractorTests.authExpectation = nil
     interactor = nil
   }
   
@@ -51,12 +50,12 @@ final class LoginInteractorTests: XCTestCase {
     
     XCTAssertTrue(interactor.dataSource.userId == nil, "UserId should be nil at this step")
     
-    LoginInteractorTests.authExpectation = expectation(description: "Authentication")
+    LoginInteractorTests.presenter.authExpectation = expectation(description: "Authentication")
     interactor.doRequest(.authenticate(withEmail: "email", andPassword: "password"))
     
     waitForExpectations(timeout: 3, handler: nil)
     
-    let userId = interactor.dataSource.userId
+    let userId = LoginInteractorTests.presenter.resultUserId
     XCTAssertNotNil(userId)
     XCTAssert(userId == "88f48f34jf3498fnvb", "UserId should be 88f48f34jf3498fnvb, instead it is \(userId!)")
   }

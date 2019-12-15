@@ -24,19 +24,17 @@ class LoginViewController: UIViewController, Displayable, LoginDisplayLogic {
   private let factory: LoginFactory
   private let mainView: LoginView
   private var interactor: LoginInteractable!
-  
-  private lazy var router: LoginRouting = {
-    factory.makeRouter(viewController: self)
-  }()
+  private var router: LoginRouting!
   
   required init(factory: LoginFactory, mainView: LoginView, dataSource: LoginModel.DataSource) {
     self.factory = factory
     self.mainView = mainView
     
     super.init(nibName: nil, bundle: nil)
-    self.interactor = factory.makeInteractor(factory: factory as! LoginInteractor.LoginFactory, viewController: self, dataSource: dataSource)
+    interactor = factory.makeInteractor(factory: factory as! LoginInteractor.LoginFactory, viewController: self, dataSource: dataSource)
+    router = factory.makeRouter(viewController: self)
   }
-
+  
   override func loadView() {
     mainView.delegate = self
     view = mainView
@@ -46,33 +44,17 @@ class LoginViewController: UIViewController, Displayable, LoginDisplayLogic {
     fatalError("init(coder:) has not been implemented, You shouldn't initialize the ViewController using Storyboards")
   }
   
-  //Only for test purpose
-  func getCurrentDataSource() -> LoginModel.DataSource {
-    return interactor.dataSource
-  }
-  
-  //Only for test purpose
-  func doAuthentication() {
-    doAuthentication(withEmail: "email", andPassword: "password")
-  }
-  
+  ////MARK: - LoginDisplayLogic
   func displayViewModel(_ viewModel: LoginModel.ViewModel) {
-     DispatchQueue.main.async {
-       switch viewModel {
-         
-       case .authenticate(let userId):
-         self.displayAuthenticationSuccess(withUserId: userId)
-       }
-     }
-   }
+    DispatchQueue.main.async {
+      switch viewModel {
+        
+      case .authenticate(let userId):
+        self.displayAuthenticationSuccess(withUserId: userId)
+      }
+    }
+  }
 }
-
-
-////MARK: - LoginDisplayLogic
-//extension LoginViewController: LoginDisplayLogic {
-//
-//
-//}
 
 
 //MARK: - LoginViewDelegate

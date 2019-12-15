@@ -14,11 +14,7 @@ import XCTest
 final class LoginPresenterTests: XCTestCase {
   
   private static var presenter: LoginPresenter!
-  private static var authExpectation: XCTestExpectation?
-  private static var resultUserId: String!
-  
-  private var viewController: LoginDisplayLogic!
-
+  private var viewController: LoginViewControllerSpy!
   
   struct LoginInjectorTest: LoginFactorable {
     
@@ -28,35 +24,35 @@ final class LoginPresenterTests: XCTestCase {
     }
   }
   
-  final class LoginTestViewController: LoginViewController {
+  final class LoginViewControllerSpy: LoginViewController {
+    var resultUserId: String!
     
     override func displayViewModel(_ viewModel: LoginModel.ViewModel) {
       
       switch viewModel {
       case .authenticate(let userId):
-        print(userId)
         resultUserId = userId
       }
     }
   }
 
   override func setUp() {
-    viewController = LoginTestViewController(factory: LoginInjectorTest(), mainView: LoginView(), dataSource: LoginModel.DataSource())
+    viewController = LoginViewControllerSpy(factory: LoginInjectorTest(), mainView: LoginView(), dataSource: LoginModel.DataSource())
   }
   
   override func tearDown() {
+    viewController = nil
     LoginPresenterTests.presenter = nil
-    LoginPresenterTests.authExpectation = nil
-    LoginPresenterTests.resultUserId = nil
   }
   
   func testLoginPresenterShouldAuthenticateSuccessfullAndSendUserIdToPresenter() {
     
+    XCTAssertNil(viewController.resultUserId)
     let beforeUserId = "84fnfn4jfd"
     LoginPresenterTests.presenter.presentResponse(.authenticate(withUserId: beforeUserId))
     
-    XCTAssertNotNil(LoginPresenterTests.resultUserId)
-    XCTAssert(beforeUserId != LoginPresenterTests.resultUserId)
-    XCTAssert(LoginPresenterTests.resultUserId == (beforeUserId + "test"))
+    XCTAssertNotNil(viewController.resultUserId)
+    XCTAssert(beforeUserId != viewController.resultUserId)
+    XCTAssert(viewController.resultUserId == (beforeUserId + "test"))
   }
 }
