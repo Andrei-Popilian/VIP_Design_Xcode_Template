@@ -1,9 +1,7 @@
 # VIP Xcode Templates
 VIP design pattern (Clean Swift by Uncle Bob)
 
-This is a modification of Clean Swift Templates (http://clean-swift.com)
-
-To learn more about Clean Swift and the VIP cycle, read:
+To learn more about Clean Swift and the VIP cycle, please read:
 
 http://clean-swift.com/clean-swift-ios-architecture
 
@@ -14,87 +12,16 @@ http://clean-swift.com/clean-swift-ios-architecture
 
 ## Installation
 
-* Before starting to use VIP Templates, please make sure you have the following protocols (adding some constraints to our implementation):
-* You can either create by yourself or copy them from the **Architecture** folder inside the templates folder. (Soon will be added to the templates as checkmarks)
-    * Factorable.swift
-    * VIPArchitecture.swift
-
-
-#### Factorable.swift
-```swift
-import UIKit
-
-struct AppInjector {}
-
-protocol Injectable {}
-
-protocol Factorable {
-
-    associatedtype DisplayLogic
-    associatedtype DataSource
-    associatedtype Interactor
-    associatedtype Presenter
-    associatedtype Router
-
-    func makeInteractor(viewController: DisplayLogic?, dataSource: DataSource) -> Interactor
-    func makePresenter(_ viewController: DisplayLogic?) -> Presenter
-    func makeRouter(viewController: UIViewController?) -> Router
-}
-
-protocol MainViewFactorable {
-    
-    associatedtype MainView
-    
-    func makeMainView() -> MainView
-}
-```
-
-#### VIPArchitecture.swift
-```swift
-import UIKit
-
-protocol Interactable {
-    
-    associatedtype Factory: Factorable
-    associatedtype DataSource: DataSourceable
-    associatedtype DisplayLogic
-    
-    init(factory: Factory, viewController: DisplayLogic?, dataSource: DataSource)
-}
-
-protocol Presentable {
-    
-    associatedtype DisplayLogic
-    
-    init(_ viewController: DisplayLogic?)
-}
-
-protocol Displayable where Self: UIViewController  {
-    
-    associatedtype Factory: Factorable
-    associatedtype DataSource: DataSourceable
-    associatedtype View: UIView
-    
-    init(factory: Factory, mainView: View, dataSource: DataSource)
-}
-
-protocol DataSourceable {}
-
-protocol Routeable {
-    
-    init(_ viewController: UIViewController?)
-}
-```
-
+* Download the repository and use the following commands:
 
 ### Install Templates
-* To install the templates, use the terminal and go to VIP Templates Folder (where the Makefile script is) and run the following command:
+* To install the templates, use the terminal and go to "VIPSwift" Folder (where the Makefile script is) and run the following command:
 ```bash
 make install_templates
 ```
 
 ### Uninstall Templates
-* To uninstall the templates, use the terminal and go to VIP Templates Folder (where the Makefile script is) and run the following command:
+* To uninstall the templates, use the terminal and go to "VIPSwift" Folder (where the Makefile script is) and run the following command:
 ```bash
 make uninstall_templates
 ```
