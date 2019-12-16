@@ -28,12 +28,28 @@ make uninstall_templates
 
 ## How To
 
-### Add Dependency Injection or Not
+* Once installed you should be able to see 2 more templates inside Xcode:
+<img width="726" alt="Screenshot 2019-12-16 at 16 54 24" src="https://user-images.githubusercontent.com/45980382/70923940-05b94f80-2029-11ea-9557-1988ef88c056.png">
 
-* Current supported dependency injection designs: **Factory**
+### Scene Template
 
-* To add dependency injection support you must check the **"Add Factory Dependency Injection"** on Scene Template as follows:
-<img width="729" alt="Screen Shot 2019-08-20 at 3 19 23 PM" src="https://user-images.githubusercontent.com/45980382/63352584-afc9e900-c361-11e9-8131-88e4084bb2eb.png">
+<img width="722" alt="Screenshot 2019-12-16 at 16 57 15" src="https://user-images.githubusercontent.com/45980382/70924102-45803700-2029-11ea-97a9-578ac8276fee.png">
+
+* Give a scene name and it should autogenerate all the files needed: ViewController, Interactor, Presenter, Router, View and Model
+
+* **Additions**: With or without Dependecy Injection
+<img width="294" alt="Screenshot 2019-12-16 at 17 30 58" src="https://user-images.githubusercontent.com/45980382/70924475-d6efa900-2029-11ea-9bc4-d0bbd9ff0a61.png">
+
+* Factory Dependency Injection will add 1 more file **(SceneName)Factorable**, and the entire implementation will support **Factory** Dependecy Injection pattern
+
+* For more details about the implementation or unit tests, please check the sample project inside repository **SampleVIPSwift/SampleVIPSwift.xcodeproj**
+
+ 
+ ### Unit Tests Template
+ 
+ * Will create 4 Unit Test files, representing tests for each component: ViewController, Interactor, Presenter, Router
+ 
+ <img width="719" alt="Screenshot 2019-12-16 at 16 58 49" src="https://user-images.githubusercontent.com/45980382/70924696-41a0e480-202a-11ea-9d86-fa25a361e930.png">
 
 
 ## Problems, Suggestions, Pull Requests?
