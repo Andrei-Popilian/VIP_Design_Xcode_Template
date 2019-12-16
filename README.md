@@ -6,6 +6,10 @@ To learn more about Clean Swift and the VIP cycle, please read:
 http://clean-swift.com/clean-swift-ios-architecture
 
 
+![VIP](https://user-images.githubusercontent.com/45980382/70925551-b294cc00-202b-11ea-8bbe-5603ccc08607.png)
+
+
+
 ### Table of Contents
  1. [Installation](#installation)
  2. [Problems, Suggestions, Pull Requests?](#problems-suggestions-pull-requests)
