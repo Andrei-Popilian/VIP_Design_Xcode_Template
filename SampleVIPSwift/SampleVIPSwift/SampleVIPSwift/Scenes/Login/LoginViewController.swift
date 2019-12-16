@@ -31,7 +31,9 @@ class LoginViewController: UIViewController, Displayable, LoginDisplayLogic {
     self.mainView = mainView
     
     super.init(nibName: nil, bundle: nil)
-    interactor = factory.makeInteractor(factory: factory as! LoginInteractor.LoginFactory, viewController: self, dataSource: dataSource)
+    
+    let interactorFactory = factory as! LoginInteractorFactorable.InteractableFactory
+    interactor = factory.makeInteractor(factory: interactorFactory, viewController: self, dataSource: dataSource)
     router = factory.makeRouter(viewController: self)
   }
   

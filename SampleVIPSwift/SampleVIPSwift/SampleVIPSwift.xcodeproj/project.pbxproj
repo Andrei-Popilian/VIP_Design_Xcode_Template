@@ -76,6 +76,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		43498C5E23A7D78700733FB9 /* NextSceneTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NextSceneTests;
+			sourceTree = "<group>";
+		};
 		435D4231238AA86E00C0F914 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +140,7 @@
 		43CB4615234F224C0033BA01 /* SampleVIPSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
+				43498C5E23A7D78700733FB9 /* NextSceneTests */,
 				6683EDB223A5042300D54D1A /* LoginTests */,
 				43CB4618234F224C0033BA01 /* Info.plist */,
 			);

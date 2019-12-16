@@ -24,5 +24,4 @@ final class LoginView: UIView {
   private enum ViewTrait {
     static let leftMargin: CGFloat = 10.0
   }
-  
 }

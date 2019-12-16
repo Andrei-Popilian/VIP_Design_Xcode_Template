@@ -35,7 +35,7 @@ final class LoginPresenterTests: XCTestCase {
       }
     }
   }
-
+  
   override func setUp() {
     viewController = LoginViewControllerSpy(factory: LoginInjectorTest(), mainView: LoginView(), dataSource: LoginModel.DataSource())
   }

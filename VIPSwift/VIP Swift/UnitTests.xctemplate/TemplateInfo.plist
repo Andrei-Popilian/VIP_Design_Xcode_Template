@@ -34,13 +34,55 @@
 		</dict>
 		<dict>
 			<key>Default</key>
-			<string>___VARIABLE_sceneName:identifier___SceneTests</string>
+			<string>___VARIABLE_sceneName:identifier___ViewControllerTests</string>
 			<key>Description</key>
-			<string>The Scene Unit Tests name</string>
+			<string>The ViewController Unit Tests name</string>
 			<key>Identifier</key>
-			<string>sceneUnitTestsName</string>
+			<string>viewControllerUnitTestsName</string>
 			<key>Name</key>
-			<string>Scene Unit Tests Name:</string>
+			<string>ViewController Unit Tests Name:</string>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>static</string>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>___VARIABLE_sceneName:identifier___InteractorTests</string>
+			<key>Description</key>
+			<string>The Interactor Unit Tests name</string>
+			<key>Identifier</key>
+			<string>interactorUnitTestsName</string>
+			<key>Name</key>
+			<string>Interactor Unit Tests Name:</string>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>static</string>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>___VARIABLE_sceneName:identifier___PresenterTests</string>
+			<key>Description</key>
+			<string>The Presenter Unit Tests name</string>
+			<key>Identifier</key>
+			<string>presenterUnitTestsName</string>
+			<key>Name</key>
+			<string>Presenter Unit Tests Name:</string>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>static</string>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>___VARIABLE_sceneName:identifier___RouterTests</string>
+			<key>Description</key>
+			<string>The Router Unit Tests name</string>
+			<key>Identifier</key>
+			<string>routerUnitTestsName</string>
+			<key>Name</key>
+			<string>Router Unit Tests Name:</string>
 			<key>Required</key>
 			<true/>
 			<key>Type</key>
@@ -54,6 +96,6 @@
 	<key>SortOrder</key>
 	<string>6</string>
 	<key>Summary</key>
-	<string>This generates a new router using Uncle Bob&apos;s clean architecture. You navigate to other scenes by presenting and dismissing other view controllers here.</string>
+	<string>This generates unitTests for the clean architecture.</string>
 </dict>
 </plist>
