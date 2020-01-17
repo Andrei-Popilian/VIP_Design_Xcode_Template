@@ -12,6 +12,8 @@
 
 import UIKit
 
+struct AppInjector {}
+
 protocol Interactable {
     
     associatedtype Factory
