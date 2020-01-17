@@ -30,7 +30,7 @@ protocol Presentable {
     init(_ viewController: DisplayLogic?)
 }
 
-protocol Displayable where Self: UIViewController  {
+protocol Displayable where Self: UIViewController {
     
     associatedtype Factory
     associatedtype DataSource: DataSourceable

@@ -13,7 +13,7 @@
 
 import Foundation
 
-struct ___VARIABLE_sceneName___Model {
+enum ___VARIABLE_sceneName___Model {
   
   enum Request {
     case doSomething(item: Int)

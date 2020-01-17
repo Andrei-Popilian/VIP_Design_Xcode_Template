@@ -17,7 +17,7 @@ protocol ___VARIABLE_sceneName___Routing {
   func routeTo(_ route: ___VARIABLE_sceneName___Model.Route)
 }
 
-final class ___VARIABLE_sceneName___Router: Routeable  {
+final class ___VARIABLE_sceneName___Router: Routeable {
   
   private weak var viewController: UIViewController?
   
@@ -27,7 +27,7 @@ final class ___VARIABLE_sceneName___Router: Routeable  {
 }
 
 
-//MARK: - ___VARIABLE_sceneName___Routing
+// MARK: - ___VARIABLE_sceneName___Routing
 extension ___VARIABLE_sceneName___Router: ___VARIABLE_sceneName___Routing {
   
   func routeTo(_ route: ___VARIABLE_sceneName___Model.Route) {
@@ -45,7 +45,7 @@ extension ___VARIABLE_sceneName___Router: ___VARIABLE_sceneName___Routing {
 }
 
 
-//MARK: - Private Zone
+// MARK: - Private Zone
 private extension ___VARIABLE_sceneName___Router {
   
   func dismiss___VARIABLE_sceneName___Scene() {

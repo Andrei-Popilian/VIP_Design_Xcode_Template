@@ -38,7 +38,7 @@ final class ___VARIABLE_sceneName___Interactor: Interactable, ___VARIABLE_sceneN
 }
 
 
-//MARK: - ___VARIABLE_sceneName___BusinessLogic
+// MARK: - ___VARIABLE_sceneName___BusinessLogic
 extension ___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___BusinessLogic {
   
   func doRequest(_ request: ___VARIABLE_sceneName___Model.Request) {
@@ -54,7 +54,7 @@ extension ___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___BusinessLo
 }
 
 
-//MARK: - Private Zone
+// MARK: - Private Zone
 private extension ___VARIABLE_sceneName___Interactor {
   
   func doSomething(_ item: Int) {

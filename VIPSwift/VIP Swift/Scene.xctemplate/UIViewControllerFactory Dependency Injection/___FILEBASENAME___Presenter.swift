@@ -25,7 +25,7 @@ final class ___VARIABLE_sceneName___Presenter: Presentable {
 }
 
 
-//MARK: - ___VARIABLE_sceneName___PresentationLogic
+// MARK: - ___VARIABLE_sceneName___PresentationLogic
 extension ___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___PresentationLogic {
   
   func presentResponse(_ response: ___VARIABLE_sceneName___Model.Response) {
@@ -39,7 +39,7 @@ extension ___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___Presentatio
 }
 
 
-//MARK: - Private Zone
+// MARK: - Private Zone
 private extension ___VARIABLE_sceneName___Presenter {
   
   func presentDoSomething(_ newItem: Int, _ isItem: Bool) {

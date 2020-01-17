@@ -24,5 +24,4 @@ final class ___VARIABLE_sceneName___View: UIView {
   private enum ViewTrait {
     static let leftMargin: CGFloat = 10.0
   }
-  
 }

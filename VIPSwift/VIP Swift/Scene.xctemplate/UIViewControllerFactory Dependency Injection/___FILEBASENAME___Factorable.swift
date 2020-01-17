@@ -20,7 +20,7 @@ extension AppInjector {
   }
 }
 
-extension AppInjector.___VARIABLE_sceneName___Injector: ___VARIABLE_sceneName___Factorable  {}
+extension AppInjector.___VARIABLE_sceneName___Injector: ___VARIABLE_sceneName___Factorable {}
 
 protocol ___VARIABLE_sceneName___Factorable: ___VARIABLE_sceneName___InteractorFactorable, ___VARIABLE_sceneName___PresenterFactorable, ___VARIABLE_sceneName___RouterFactorable, ___VARIABLE_sceneName___ServicesFactorable { }
 
@@ -54,7 +54,7 @@ extension ___VARIABLE_sceneName___Factorable {
 }
 
 
-//MARK: - Service Factorable
+// MARK: - Service Factorable
 protocol ___VARIABLE_sceneName___ServicesFactorable {
   
   //func makeXService() -> xService

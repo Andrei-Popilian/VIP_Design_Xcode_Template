@@ -27,7 +27,7 @@ protocol Presentable {
     init(_ viewController: DisplayLogic?)
 }
 
-protocol Displayable where Self: UIViewController  {
+protocol Displayable where Self: UIViewController {
     
     associatedtype DataSource: DataSourceable
     associatedtype View: UIView
