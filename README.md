@@ -6,7 +6,7 @@ To learn more about Clean Swift and the VIP cycle, please read:
 http://clean-swift.com/clean-swift-ios-architecture
 
 
-![VIP](https://user-images.githubusercontent.com/45980382/70925551-b294cc00-202b-11ea-8bbe-5603ccc08607.png)
+![VIP](https://user-images.githubusercontent.com/45980382/75621523-c2856c00-5b95-11ea-8d11-8a23810ef252.png)
 
 
 
@@ -33,16 +33,16 @@ make uninstall_templates
 ## How To
 
 * Once installed you should be able to see 2 more templates inside Xcode:
-<img width="726" alt="Screenshot 2019-12-16 at 16 54 24" src="https://user-images.githubusercontent.com/45980382/70923940-05b94f80-2029-11ea-9557-1988ef88c056.png">
+<img width="726" alt="Screenshot 2019-12-16 at 16 54 24" src="https://user-images.githubusercontent.com/45980382/75621551-26a83000-5b96-11ea-9e98-c462b62e2b10.png">
 
 ### Scene Template
 
-<img width="722" alt="Screenshot 2019-12-16 at 16 57 15" src="https://user-images.githubusercontent.com/45980382/70924102-45803700-2029-11ea-97a9-578ac8276fee.png">
+<img width="722" alt="Screenshot 2019-12-16 at 16 57 15" src="https://user-images.githubusercontent.com/45980382/75621559-463f5880-5b96-11ea-99d1-30e4146d4e63.png">
 
 * Give a scene name and it should autogenerate all the files needed: ViewController, Interactor, Presenter, Router, View and Model
 
 * **Additions**: With or without Dependecy Injection
-<img width="294" alt="Screenshot 2019-12-16 at 17 30 58" src="https://user-images.githubusercontent.com/45980382/70924475-d6efa900-2029-11ea-9bc4-d0bbd9ff0a61.png">
+<img width="294" alt="Screenshot 2019-12-16 at 17 30 58" src="https://user-images.githubusercontent.com/45980382/75621562-53f4de00-5b96-11ea-8673-5e6168eecc18.png">
 
 * Factory Dependency Injection will add 1 more file **(SceneName)Factorable**, and the entire implementation will support **Factory** Dependecy Injection pattern
 
@@ -53,7 +53,7 @@ make uninstall_templates
  
  * Will create 4 Unit Test files, representing tests for each component: ViewController, Interactor, Presenter, Router
  
- <img width="719" alt="Screenshot 2019-12-16 at 16 58 49" src="https://user-images.githubusercontent.com/45980382/70924696-41a0e480-202a-11ea-9d86-fa25a361e930.png">
+ <img width="719" alt="Screenshot 2019-12-16 at 16 58 49" src="https://user-images.githubusercontent.com/45980382/75621575-6bcc6200-5b96-11ea-8d3a-1342d7b1d923.png">
 
 
 ## Problems, Suggestions, Pull Requests?
