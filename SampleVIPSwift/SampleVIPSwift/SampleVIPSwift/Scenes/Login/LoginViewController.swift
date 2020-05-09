@@ -46,7 +46,8 @@ class LoginViewController: UIViewController, Displayable, LoginDisplayLogic {
     fatalError("init(coder:) has not been implemented, You shouldn't initialize the ViewController using Storyboards")
   }
   
-  ////MARK: - LoginDisplayLogic
+  
+  //MARK: - LoginDisplayLogic
   func displayViewModel(_ viewModel: LoginModel.ViewModel) {
     DispatchQueue.main.async {
       switch viewModel {

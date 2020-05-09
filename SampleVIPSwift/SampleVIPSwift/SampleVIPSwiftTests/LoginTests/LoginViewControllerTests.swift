@@ -16,27 +16,6 @@ final class LoginViewControllerTests: XCTestCase {
   private static var interactor: LoginInteractor!
   private var viewController: LoginViewControllerSpy!
   
-  struct LoginTestInjector: LoginFactorable {
-    
-    func makeInteractor(factory: LoginPresenterFactorable & LoginServicesFactorable, viewController: LoginDisplayLogic?, dataSource: LoginModel.DataSource) -> LoginInteractable {
-      interactor = LoginInteractor(factory: factory, viewController: viewController, dataSource: dataSource)
-      return interactor
-    }
-  }
-  
-  final class LoginViewControllerSpy: LoginViewController {
-    var authExpectation: XCTestExpectation!
-    var resultUserId: String!
-    
-    override func displayViewModel(_ viewModel: LoginModel.ViewModel) {
-      switch viewModel {
-      case .authenticate(let userId):
-        resultUserId = userId
-        authExpectation.fulfill()
-      }
-    }
-  }
-  
   override func setUp() {
     viewController = LoginViewControllerSpy(factory: LoginTestInjector(), mainView: LoginView(), dataSource: LoginModel.DataSource())
   }
@@ -58,5 +37,31 @@ final class LoginViewControllerTests: XCTestCase {
     let userId = viewController.resultUserId
     XCTAssertNotNil(userId)
     XCTAssert(userId == "88f48f34jf3498fnvbtest", "UserId should be 88f48f34jf3498fnvbtest, instead it is \(userId!)")
+  }
+}
+
+
+// MARK: - Spy Classes Setup
+private extension LoginViewControllerTests {
+  
+  struct LoginTestInjector: LoginFactorable {
+    
+    func makeInteractor(factory: LoginPresenterFactorable & LoginServicesFactorable, viewController: LoginDisplayLogic?, dataSource: LoginModel.DataSource) -> LoginInteractable {
+      interactor = LoginInteractor(factory: factory, viewController: viewController, dataSource: dataSource)
+      return interactor
+    }
+  }
+  
+  final class LoginViewControllerSpy: LoginViewController {
+    var authExpectation: XCTestExpectation!
+    var resultUserId: String!
+    
+    override func displayViewModel(_ viewModel: LoginModel.ViewModel) {
+      switch viewModel {
+      case .authenticate(let userId):
+        resultUserId = userId
+        authExpectation.fulfill()
+      }
+    }
   }
 }

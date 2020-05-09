@@ -13,26 +13,8 @@ import XCTest
 
 final class LoginRouterTests: XCTestCase {
   
-  private static var router: LoginRouter!
+  private static var router: LoginRouting!
   private var viewController: LoginViewControllerSpy!
-  
-  struct LoginInjectorTest: LoginFactorable {
-    
-    func makeRouter(viewController: UIViewController?) -> LoginRouting {
-      router = LoginRouter(viewController)
-      return router
-    }
-  }
-  
-  final class LoginViewControllerSpy: LoginViewController {
-    var deinitExpectation: XCTestExpectation!
-    var isDismissed: Bool = false
-    
-    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
-      isDismissed = true
-      deinitExpectation.fulfill()
-    }
-  }
   
   override func setUp() {
     viewController = LoginViewControllerSpy(factory: LoginInjectorTest(), mainView: LoginView(), dataSource: LoginModel.DataSource())
@@ -52,5 +34,28 @@ final class LoginRouterTests: XCTestCase {
     waitForExpectations(timeout: 1, handler: nil)
     
     XCTAssertTrue(viewController.isDismissed)
+  }
+}
+
+
+// MARK: - Spy Classes Setup
+private extension LoginRouterTests {
+
+  struct LoginInjectorTest: LoginFactorable {
+
+    func makeRouter(viewController: UIViewController?) -> LoginRouting {
+      router = LoginRouter(viewController)
+      return router
+    }
+  }
+
+  final class LoginViewControllerSpy: LoginViewController {
+    var deinitExpectation: XCTestExpectation!
+    var isDismissed: Bool = false
+
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+      isDismissed = true
+      deinitExpectation.fulfill()
+    }
   }
 }
