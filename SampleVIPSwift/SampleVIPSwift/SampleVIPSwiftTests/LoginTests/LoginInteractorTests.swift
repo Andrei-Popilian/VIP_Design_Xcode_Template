@@ -15,28 +15,6 @@ final class LoginInteractorTests: XCTestCase {
   private static var presenter: LoginPresenterSpy!
   private var interactor: LoginInteractor!
   
-  struct LoginTestInjector: LoginFactorable {
-    
-    func makePresenter(_ viewController: LoginDisplayLogic?) -> LoginPresentationLogic {
-      presenter = LoginPresenterSpy()
-      return presenter
-    }
-  }
-  
-  final class LoginPresenterSpy: LoginPresentationLogic {
-    var authExpectation: XCTestExpectation!
-    var resultUserId: String!
-    
-    func presentResponse(_ response: LoginModel.Response) {
-      
-      switch response {
-      case .authenticate(let userId):
-        resultUserId = userId
-        authExpectation.fulfill()
-      }
-    }
-  }
-  
   override func setUp() {
     interactor = LoginInteractor(factory: LoginTestInjector(), viewController: nil, dataSource: LoginModel.DataSource())
   }
@@ -58,5 +36,33 @@ final class LoginInteractorTests: XCTestCase {
     let userId = LoginInteractorTests.presenter.resultUserId
     XCTAssertNotNil(userId)
     XCTAssert(userId == "88f48f34jf3498fnvb", "UserId should be 88f48f34jf3498fnvb, instead it is \(userId!)")
+  }
+}
+
+
+
+// MARK: - Spy Classes Setup
+private extension LoginInteractorTests {
+  
+  struct LoginTestInjector: LoginFactorable {
+    
+    func makePresenter(_ viewController: LoginDisplayLogic?) -> LoginPresentationLogic {
+      presenter = LoginPresenterSpy()
+      return presenter
+    }
+  }
+  
+  final class LoginPresenterSpy: LoginPresentationLogic {
+    var authExpectation: XCTestExpectation!
+    var resultUserId: String!
+    
+    func presentResponse(_ response: LoginModel.Response) {
+      
+      switch response {
+      case .authenticate(let userId):
+        resultUserId = userId
+        authExpectation.fulfill()
+      }
+    }
   }
 }
