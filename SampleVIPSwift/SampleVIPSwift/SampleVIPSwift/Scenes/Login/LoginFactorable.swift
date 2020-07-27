@@ -12,15 +12,12 @@
 
 import UIKit
 
-extension AppInjector {
-  
-  struct LoginInjector {
-    static let shared: LoginInjector = LoginInjector()
-    private init() {}
-  }
+extension AppInjector: LoginFactorable  {
+
+  struct LoginInjector {}
 }
 
-extension AppInjector.LoginInjector: LoginFactorable  {}
+extension AppInjector.LoginInjector: LoginFactorable {}
 
 protocol LoginFactorable: LoginInteractorFactorable, LoginPresenterFactorable,
                           LoginRouterFactorable, LoginServicesFactorable {}
@@ -28,7 +25,9 @@ protocol LoginFactorable: LoginInteractorFactorable, LoginPresenterFactorable,
 protocol LoginInteractorFactorable {
   typealias InteractableFactory = LoginPresenterFactorable & LoginServicesFactorable
   
-  func makeInteractor(factory: InteractableFactory, viewController: LoginDisplayLogic?, dataSource: LoginModel.DataSource) -> LoginInteractable
+  func makeInteractor(factory: InteractableFactory,
+                      viewController: LoginDisplayLogic?,
+                      dataSource: LoginModel.DataSource) -> LoginInteractable
 }
 
 protocol LoginPresenterFactorable {
@@ -40,9 +39,12 @@ protocol LoginRouterFactorable {
 }
 
 
+// MARK: - VIP Factory
 extension LoginFactorable {
   
-  func makeInteractor(factory: InteractableFactory, viewController: LoginDisplayLogic?, dataSource: LoginModel.DataSource) -> LoginInteractable {
+  func makeInteractor(factory: InteractableFactory,
+                      viewController: LoginDisplayLogic?,
+                      dataSource: LoginModel.DataSource) -> LoginInteractable {
     
     LoginInteractor(factory: factory, viewController: viewController, dataSource: dataSource)
   }
@@ -57,7 +59,7 @@ extension LoginFactorable {
 }
 
 
-//MARK: - Service Factorable
+//MARK: - Services Factory
 protocol LoginServicesFactorable {
   
   func makeAuthService() -> AuthService

@@ -17,7 +17,7 @@
 		43CB4600234F224B0033BA01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CB45FF234F224B0033BA01 /* AppDelegate.swift */; };
 		43CB4609234F224C0033BA01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43CB4608234F224C0033BA01 /* Assets.xcassets */; };
 		43CB460C234F224C0033BA01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43CB460A234F224C0033BA01 /* LaunchScreen.storyboard */; };
-		43CB4625234F22E40033BA01 /* VIPArchitecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CB4624234F22E40033BA01 /* VIPArchitecture.swift */; };
+		43CB4625234F22E40033BA01 /* AppInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CB4624234F22E40033BA01 /* AppInjector.swift */; };
 		663D8BA52466A867004BDF6C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663D8BA42466A867004BDF6C /* main.swift */; };
 		666FDAED23A640F0001178A0 /* LoginPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666FDAEC23A640F0001178A0 /* LoginPresenterTests.swift */; };
 		6683EDB423A5044200D54D1A /* LoginInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6683EDB323A5044200D54D1A /* LoginInteractorTests.swift */; };
@@ -51,7 +51,7 @@
 		43CB460D234F224C0033BA01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43CB4612234F224C0033BA01 /* SampleVIPSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleVIPSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43CB4618234F224C0033BA01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		43CB4624234F22E40033BA01 /* VIPArchitecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPArchitecture.swift; sourceTree = "<group>"; };
+		43CB4624234F22E40033BA01 /* AppInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInjector.swift; sourceTree = "<group>"; };
 		663D8BA42466A867004BDF6C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		666FDAEC23A640F0001178A0 /* LoginPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterTests.swift; sourceTree = "<group>"; };
 		6683EDB323A5044200D54D1A /* LoginInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorTests.swift; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 		43CB4621234F22A40033BA01 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				43CB4624234F22E40033BA01 /* VIPArchitecture.swift */,
+				43CB4624234F22E40033BA01 /* AppInjector.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -222,7 +222,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1110;
-				LastUpgradeCheck = 1110;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Andrei Popilian";
 				TargetAttributes = {
 					43CB45FB234F224B0033BA01 = {
@@ -280,7 +280,7 @@
 				435D424E238AA99E00C0F914 /* LoginViewController.swift in Sources */,
 				435D424C238AA99E00C0F914 /* LoginPresenter.swift in Sources */,
 				43CB4600234F224B0033BA01 /* AppDelegate.swift in Sources */,
-				43CB4625234F22E40033BA01 /* VIPArchitecture.swift in Sources */,
+				43CB4625234F22E40033BA01 /* AppInjector.swift in Sources */,
 				66E0F00B239D14300098258B /* AuthService.swift in Sources */,
 				435D4251238AA99E00C0F914 /* LoginModel.swift in Sources */,
 				435D424F238AA99E00C0F914 /* LoginInteractor.swift in Sources */,
@@ -350,6 +350,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -410,6 +411,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

@@ -17,7 +17,7 @@ protocol LoginPresentationLogic {
   func presentResponse(_ response: LoginModel.Response)
 }
 
-class LoginPresenter: Presentable {
+final class LoginPresenter {
   
   private weak var viewController: LoginDisplayLogic?
   

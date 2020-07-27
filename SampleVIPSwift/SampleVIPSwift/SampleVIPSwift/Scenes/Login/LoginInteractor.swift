@@ -23,17 +23,20 @@ protocol LoginDataStore {
   var dataSource: LoginModel.DataSource { get }
 }
 
-final class LoginInteractor: Interactable, LoginDataStore {
+final class LoginInteractor: LoginDataStore {
   
   var dataSource: LoginModel.DataSource
   
   private var factory: LoginInteractorFactorable.InteractableFactory
   private var presenter: LoginPresentationLogic
   
-  init(factory: LoginInteractorFactorable.InteractableFactory, viewController: LoginDisplayLogic?, dataSource: LoginModel.DataSource) {
+  init(factory: LoginInteractorFactorable.InteractableFactory,
+       viewController: LoginDisplayLogic?,
+       dataSource: LoginModel.DataSource) {
+    
     self.factory = factory
     self.dataSource = dataSource
-    self.presenter = factory.makePresenter(viewController)
+    presenter = factory.makePresenter(viewController)
   }
 }
 
@@ -45,7 +48,7 @@ extension LoginInteractor: LoginBusinessLogic {
     DispatchQueue.global(qos: .userInitiated).async {
       
       switch request {
-        
+      
       case .authenticate(let email, let password):
         self.doAuthentication(withEmail: email, andPassword: password)
       }
@@ -57,7 +60,6 @@ extension LoginInteractor: LoginBusinessLogic {
 //MARK: - Private Zone
 private extension LoginInteractor {
   
-  
   func doAuthentication(withEmail email: String, andPassword password: String) {
     
     let authService = factory.makeAuthService()
@@ -66,11 +68,11 @@ private extension LoginInteractor {
       guard let self = self else { return }
       
       switch result {
-        
+      
       case .failure(let error):
         print(error)
-        //do error handling or pass to error handler
-        
+      //do error handling or pass to error handler
+      
       case .success(let userId):
         self.dataSource.userId = userId
         self.presenter.presentResponse(.authenticate(withUserId: userId))

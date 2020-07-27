@@ -17,7 +17,7 @@ protocol LoginDisplayLogic where Self: UIViewController {
   func displayViewModel(_ viewModel: LoginModel.ViewModel)
 }
 
-class LoginViewController: UIViewController, Displayable, LoginDisplayLogic {
+final class LoginViewController: UIViewController {
   
   typealias LoginFactory = LoginInteractorFactorable & LoginRouterFactorable
   
@@ -26,7 +26,10 @@ class LoginViewController: UIViewController, Displayable, LoginDisplayLogic {
   private var interactor: LoginInteractable!
   private var router: LoginRouting!
   
-  required init(factory: LoginFactory, mainView: LoginView, dataSource: LoginModel.DataSource) {
+  required init(factory: LoginFactory,
+                mainView: LoginView,
+                dataSource: LoginModel.DataSource) {
+    
     self.factory = factory
     self.mainView = mainView
     
@@ -45,13 +48,16 @@ class LoginViewController: UIViewController, Displayable, LoginDisplayLogic {
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented, You shouldn't initialize the ViewController using Storyboards")
   }
+}
+
+
+// MARK: - LoginDisplayLogic
+extension LoginViewController: LoginDisplayLogic {
   
-  
-  //MARK: - LoginDisplayLogic
   func displayViewModel(_ viewModel: LoginModel.ViewModel) {
     DispatchQueue.main.async {
       switch viewModel {
-        
+      
       case .authenticate(let userId):
         self.displayAuthenticationSuccess(withUserId: userId)
       }
@@ -63,7 +69,7 @@ class LoginViewController: UIViewController, Displayable, LoginDisplayLogic {
 //MARK: - LoginViewDelegate
 extension LoginViewController: LoginViewDelegate {
   
-  func sendDataBackToParent(_ data: Data) {
+  func sendActionsBackToViewController(_ data: Data) {
     //usually this delegate takes care of user actions and requests through UI
     
     //do something with the data or message sent back from mainView
@@ -84,4 +90,3 @@ private extension LoginViewController {
     interactor.doRequest(.authenticate(withEmail: email, andPassword: password))
   }
 }
-

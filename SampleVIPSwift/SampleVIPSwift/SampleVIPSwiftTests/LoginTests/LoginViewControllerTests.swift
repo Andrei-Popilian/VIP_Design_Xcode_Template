@@ -13,24 +13,24 @@ import XCTest
 
 final class LoginViewControllerTests: XCTestCase {
   
-  private static var interactor: LoginInteractor!
-  private var viewController: LoginViewControllerSpy!
+  private var interactor: LoginInteractorSpy!
+  private var viewController: LoginViewController!
   
   override func setUp() {
-    viewController = LoginViewControllerSpy(factory: LoginTestInjector(), mainView: LoginView(), dataSource: LoginModel.DataSource())
+    viewController = LoginViewController(factory: LoginTestInjector(), mainView: LoginView(), dataSource: LoginModel.DataSource())
   }
   
   override func tearDown() {
-    LoginViewControllerTests.interactor = nil
+    interactor = nil
     viewController = nil
   }
   
   func testLoginInteractorShouldAuthenticateSuccessfullAndSendUserIdToViewController() {
     
-    XCTAssertTrue(LoginViewControllerTests.interactor.dataSource.userId == nil, "UserId should be nil at this step")
+    XCTAssertTrue(interactor.dataSource.userId == nil, "UserId should be nil at this step")
     
     viewController.authExpectation = expectation(description: "Authentication")
-    LoginViewControllerTests.interactor.doRequest(.authenticate(withEmail: "email", andPassword: "password"))
+    interactor.doRequest(.authenticate(withEmail: "email", andPassword: "password"))
     
     waitForExpectations(timeout: 3, handler: nil)
     
@@ -41,27 +41,42 @@ final class LoginViewControllerTests: XCTestCase {
 }
 
 
-// MARK: - Spy Classes Setup
-private extension LoginViewControllerTests {
-  
+// MARK: - LoginFactorable, Injector
+extension LoginViewControllerTests: LoginFactorable {
+
   struct LoginTestInjector: LoginFactorable {
-    
-    func makeInteractor(factory: LoginPresenterFactorable & LoginServicesFactorable, viewController: LoginDisplayLogic?, dataSource: LoginModel.DataSource) -> LoginInteractable {
+
+    func makeInteractor(factory: InteractableFactory,
+                        viewController: LoginDisplayLogic?,
+                        dataSource: LoginModel.DataSource) -> LoginInteractable {
       interactor = LoginInteractor(factory: factory, viewController: viewController, dataSource: dataSource)
       return interactor
     }
   }
-  
-  final class LoginViewControllerSpy: LoginViewController {
-    var authExpectation: XCTestExpectation!
-    var resultUserId: String!
-    
-    override func displayViewModel(_ viewModel: LoginModel.ViewModel) {
-      switch viewModel {
-      case .authenticate(let userId):
-        resultUserId = userId
-        authExpectation.fulfill()
-      }
+}
+
+
+// MARK: - Spy Classes Setup
+private extension LoginViewControllerTests {
+
+  final class LoginInteractorSpy: LoginBusinessLogic {
+
+    func doRequest(_ request: LoginModel.Request) {
+
     }
   }
+
+  
+//  final class LoginViewControllerSpypleas {
+//    var authExpectation: XCTestExpectation!
+//    var resultUserId: String!
+//
+//    override func displayViewModel(_ viewModel: LoginModel.ViewModel) {
+//      switch viewModel {
+//      case .authenticate(let userId):
+//        resultUserId = userId
+//        authExpectation.fulfill()
+//      }
+//    }
+//  }
 }

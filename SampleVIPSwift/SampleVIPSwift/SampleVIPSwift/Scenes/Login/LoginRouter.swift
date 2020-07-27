@@ -17,7 +17,7 @@ protocol LoginRouting {
   func routeTo(_ route: LoginModel.Route)
 }
 
-final class LoginRouter: Routeable  {
+final class LoginRouter {
   
   private weak var viewController: UIViewController?
   

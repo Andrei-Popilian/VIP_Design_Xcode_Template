@@ -32,7 +32,7 @@ struct LoginModel {
     case showAuthenticateSuccess(withUserId: String)
   }
   
-  struct DataSource: DataSourceable {
+  struct DataSource {
     var userId: String?
   }
 }
