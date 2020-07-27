@@ -8,7 +8,13 @@
 
 import Foundation
 
-final class AuthService {
+protocol AuthServiceProtocol {
+
+  func doAuth(withEmail email: String, password: String, completion: @escaping (Result<String, Error>) -> Void)
+}
+
+
+final class AuthService: AuthServiceProtocol {
   
   func doAuth(withEmail email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
     

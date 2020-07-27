@@ -62,12 +62,12 @@ extension LoginFactorable {
 //MARK: - Services Factory
 protocol LoginServicesFactorable {
   
-  func makeAuthService() -> AuthService
+  func makeAuthService() -> AuthServiceProtocol
 }
 
 extension LoginServicesFactorable {
   
-  func makeAuthService() -> AuthService {
+  func makeAuthService() -> AuthServiceProtocol {
     AuthService()
   }
 }

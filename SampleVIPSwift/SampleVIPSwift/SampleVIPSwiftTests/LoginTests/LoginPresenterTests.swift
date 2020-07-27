@@ -13,50 +13,42 @@ import XCTest
 
 final class LoginPresenterTests: XCTestCase {
   
-  private static var presenter: LoginPresenter!
+  private var presenter: LoginPresenter!
   private var viewController: LoginViewControllerSpy!
   
   override func setUp() {
-    viewController = LoginViewControllerSpy(factory: LoginInjectorTest(), mainView: LoginView(), dataSource: LoginModel.DataSource())
+    viewController = LoginViewControllerSpy()
+    presenter = LoginPresenter(viewController)
   }
   
   override func tearDown() {
     viewController = nil
-    LoginPresenterTests.presenter = nil
+    presenter = nil
   }
   
-  func testLoginPresenterShouldAuthenticateSuccessfullAndSendUserIdToPresenter() {
+  func testLoginPresenterShouldSendUserIdToPresenterProperly() {
     
-    XCTAssertNil(viewController.resultUserId)
-    let beforeUserId = "84fnfn4jfd"
-    LoginPresenterTests.presenter.presentResponse(.authenticate(withUserId: beforeUserId))
-    
-    XCTAssertNotNil(viewController.resultUserId)
-    XCTAssert(beforeUserId != viewController.resultUserId)
-    XCTAssert(viewController.resultUserId == (beforeUserId + "test"))
+    XCTAssertNil(viewController.passedUserId)
+    let testUserId = "84fnfn4jfd"
+    presenter.presentResponse(.authenticate(withUserId: testUserId))
+
+    XCTAssertEqual(viewController.passedUserId, testUserId + "test")
   }
 }
 
 
+
 // MARK: - Spy Classes Setup
 private extension LoginPresenterTests {
-  
-  struct LoginInjectorTest: LoginFactorable {
+
+  final class LoginViewControllerSpy: UIViewController, LoginDisplayLogic {
+    var passedUserId: String!
     
-    func makePresenter(_ viewController: LoginDisplayLogic?) -> LoginPresentationLogic {
-      presenter = LoginPresenter(viewController)
-      return presenter
-    }
-  }
-  
-  final class LoginViewControllerSpy: LoginViewController {
-    var resultUserId: String!
-    
-    override func displayViewModel(_ viewModel: LoginModel.ViewModel) {
+    func displayViewModel(_ viewModel: LoginModel.ViewModel) {
       
       switch viewModel {
-      case .authenticate(let userId):
-        resultUserId = userId
+      case let .authenticate(userId):
+        passedUserId = userId
       }
     }
   }

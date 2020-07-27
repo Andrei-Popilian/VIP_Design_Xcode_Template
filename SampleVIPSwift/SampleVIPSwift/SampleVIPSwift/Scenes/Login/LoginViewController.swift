@@ -69,10 +69,11 @@ extension LoginViewController: LoginDisplayLogic {
 //MARK: - LoginViewDelegate
 extension LoginViewController: LoginViewDelegate {
   
-  func sendActionsBackToViewController(_ data: Data) {
+  func sendActionsBackToViewController(email: String, password: String) {
     //usually this delegate takes care of user actions and requests through UI
     
-    //do something with the data or message sent back from mainView
+    //do something with the data or message, sent from mainView
+    doAuthentication(withEmail: email, andPassword: password)
   }
 }
 

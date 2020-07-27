@@ -12,57 +12,82 @@ import XCTest
 
 final class LoginInteractorTests: XCTestCase {
   
-  private static var presenter: LoginPresenterSpy!
+  private var presenter: LoginPresenterSpy!
   private var interactor: LoginInteractor!
+  private var authService: AuthServiceSpy!
   
   override func setUp() {
-    interactor = LoginInteractor(factory: LoginTestInjector(), viewController: nil, dataSource: LoginModel.DataSource())
+    interactor = LoginInteractor(factory: self, viewController: nil, dataSource: LoginModel.DataSource())
   }
   
   override func tearDown() {
-    LoginInteractorTests.presenter = nil
+    presenter = nil
     interactor = nil
+    authService = nil
   }
   
   func testLoginInteractorShouldAuthenticateSuccessfullAndSendUserIdToPresenter() {
-    
+
+    presenter.authExpectation = expectation(description: "authExpectation")
+
     XCTAssertTrue(interactor.dataSource.userId == nil, "UserId should be nil at this step")
-    
-    LoginInteractorTests.presenter.authExpectation = expectation(description: "Authentication")
-    interactor.doRequest(.authenticate(withEmail: "email", andPassword: "password"))
-    
-    waitForExpectations(timeout: 3, handler: nil)
-    
-    let userId = LoginInteractorTests.presenter.resultUserId
-    XCTAssertNotNil(userId)
-    XCTAssert(userId == "88f48f34jf3498fnvb", "UserId should be 88f48f34jf3498fnvb, instead it is \(userId!)")
+
+    let testEmail = "email11"
+    let testPassword = "pass122"
+    interactor.doRequest(.authenticate(withEmail: testEmail, andPassword: testPassword))
+
+    wait(for: [presenter.authExpectation], timeout: 0.1)
+
+    XCTAssertEqual(testEmail, authService.passedEmail)
+    XCTAssertEqual(testPassword, authService.passedPassword)
+    XCTAssertEqual(testEmail+testPassword, presenter.passedUserId)
   }
 }
 
 
+// MARK: - LoginFactorable
+extension LoginInteractorTests: LoginFactorable {
+
+  func makePresenter(_ viewController: LoginDisplayLogic?) -> LoginPresentationLogic {
+    presenter = LoginPresenterSpy()
+    return presenter
+  }
+
+  func makeAuthService() -> AuthServiceProtocol {
+    authService = AuthServiceSpy()
+    return authService
+  }
+}
+
 
 // MARK: - Spy Classes Setup
 private extension LoginInteractorTests {
-  
-  struct LoginTestInjector: LoginFactorable {
-    
-    func makePresenter(_ viewController: LoginDisplayLogic?) -> LoginPresentationLogic {
-      presenter = LoginPresenterSpy()
-      return presenter
-    }
-  }
-  
+
   final class LoginPresenterSpy: LoginPresentationLogic {
     var authExpectation: XCTestExpectation!
-    var resultUserId: String!
+    var passedUserId: String!
     
     func presentResponse(_ response: LoginModel.Response) {
       
       switch response {
       case .authenticate(let userId):
-        resultUserId = userId
+        passedUserId = userId
         authExpectation.fulfill()
       }
+    }
+  }
+
+  final class AuthServiceSpy: AuthServiceProtocol {
+
+    var passedEmail: String!
+    var passedPassword: String!
+
+    func doAuth(withEmail email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
+      passedEmail = email
+      passedPassword = password
+
+      let userId = email + password
+      completion(.success(userId))
     }
   }
 }

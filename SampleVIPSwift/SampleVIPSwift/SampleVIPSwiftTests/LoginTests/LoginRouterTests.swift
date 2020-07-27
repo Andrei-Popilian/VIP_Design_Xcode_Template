@@ -11,27 +11,28 @@ import XCTest
 @testable import SampleVIPSwift
 
 
-final class LoginRouterTests: XCTestCase {
+final class LoginRouterTests: XCTestCase, LoginFactorable {
   
-  private static var router: LoginRouting!
+  private var router: LoginRouting!
   private var viewController: LoginViewControllerSpy!
   
   override func setUp() {
-    viewController = LoginViewControllerSpy(factory: LoginInjectorTest(), mainView: LoginView(), dataSource: LoginModel.DataSource())
+    viewController = LoginViewControllerSpy()
+    router = LoginRouter(viewController)
   }
   
   override func tearDown() {
     viewController = nil
-    LoginRouterTests.router = nil
+    router = nil
   }
   
   func testLoginRouterShouldDismissViewController() {
     
     XCTAssertFalse(viewController.isDismissed)
-    viewController.deinitExpectation = expectation(description: "LoginViewControllerDeinited")
-    LoginRouterTests.router.routeTo(.dismissLoginScene)
-    
-    waitForExpectations(timeout: 1, handler: nil)
+    viewController.deinitExpectation = expectation(description: "deinitExpectation")
+
+    router.routeTo(.dismissLoginScene)
+    wait(for: [viewController.deinitExpectation], timeout: 0.1)
     
     XCTAssertTrue(viewController.isDismissed)
   }
@@ -41,15 +42,7 @@ final class LoginRouterTests: XCTestCase {
 // MARK: - Spy Classes Setup
 private extension LoginRouterTests {
 
-  struct LoginInjectorTest: LoginFactorable {
-
-    func makeRouter(viewController: UIViewController?) -> LoginRouting {
-      router = LoginRouter(viewController)
-      return router
-    }
-  }
-
-  final class LoginViewControllerSpy: LoginViewController {
+  final class LoginViewControllerSpy: UIViewController {
     var deinitExpectation: XCTestExpectation!
     var isDismissed: Bool = false
 

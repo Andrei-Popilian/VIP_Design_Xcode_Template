@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginViewDelegate where Self: UIViewController {
   
-  func sendActionsBackToViewController(_ data: Data)
+  func sendActionsBackToViewController(email: String, password: String)
 }
 
 final class LoginView: UIView {
