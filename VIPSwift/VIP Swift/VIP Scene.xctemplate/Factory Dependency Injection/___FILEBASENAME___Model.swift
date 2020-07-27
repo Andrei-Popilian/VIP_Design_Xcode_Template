@@ -32,7 +32,7 @@ enum ___VARIABLE_sceneName___Model {
     case xScene(xData: Int)
   }
   
-  struct DataSource: DataSourceable {
+  struct DataSource {
     //var test: Int
   }
 }

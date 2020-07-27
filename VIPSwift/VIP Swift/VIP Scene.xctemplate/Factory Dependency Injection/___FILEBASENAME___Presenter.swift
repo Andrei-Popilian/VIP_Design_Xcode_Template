@@ -16,7 +16,7 @@ protocol ___VARIABLE_sceneName___PresentationLogic {
   func presentResponse(_ response: ___VARIABLE_sceneName___Model.Response)
 }
 
-final class ___VARIABLE_sceneName___Presenter: Presentable {
+final class ___VARIABLE_sceneName___Presenter {
   private weak var viewController: ___VARIABLE_sceneName___DisplayLogic?
   
   init(_ viewController: ___VARIABLE_sceneName___DisplayLogic?) {
@@ -32,8 +32,8 @@ extension ___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___Presentatio
     
     switch response {
       
-    case .doSomething(let newItem, let isItem):
-      presentDoSomething(newItem, isItem)
+    case .doSomething(let theNewItem, let isItem):
+      presentDoSomething(theNewItem, isItem)
     }
   }
 }

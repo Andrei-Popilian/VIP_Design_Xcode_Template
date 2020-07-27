@@ -17,7 +17,7 @@ protocol ___VARIABLE_sceneName___DisplayLogic where Self: UIViewController {
   func displayViewModel(_ viewModel: ___VARIABLE_sceneName___Model.ViewModel)
 }
 
-final class ___VARIABLE_sceneName___ViewController: UIViewController, Displayable, ___VARIABLE_sceneName___DisplayLogic {
+final class ___VARIABLE_sceneName___ViewController: UIViewController {
   
   private let mainView: ___VARIABLE_sceneName___View
   private var interactor: ___VARIABLE_sceneName___Interactable!
@@ -44,9 +44,12 @@ final class ___VARIABLE_sceneName___ViewController: UIViewController, Displayabl
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented, You should't initialize the ViewController through Storyboards")
   }
-  
-  
-  // MARK: - ___VARIABLE_sceneName___DisplayLogic
+}
+
+
+// MARK: - ___VARIABLE_sceneName___DisplayLogic
+extension ___VARIABLE_sceneName___ViewController: ___VARIABLE_sceneName___DisplayLogic {
+
   func displayViewModel(_ viewModel: ___VARIABLE_sceneName___Model.ViewModel) {
     DispatchQueue.main.async {
       switch viewModel {
@@ -79,4 +82,3 @@ private extension ___VARIABLE_sceneName___ViewController {
     router.routeTo(.xScene(xData: 22))
   }
 }
-

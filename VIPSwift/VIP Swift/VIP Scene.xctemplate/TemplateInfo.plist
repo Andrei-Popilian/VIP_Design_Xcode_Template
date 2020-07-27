@@ -117,30 +117,6 @@
 			<string>static</string>
 		</dict>
 		<dict>
-			<key>Default</key>
-			<string>UIViewController</string>
-			<key>Description</key>
-			<string>What view controller class to subclass for the new scene</string>
-			<key>FallbackHeader</key>
-			<string>#import &lt;UIKit/UIKit.h&gt;</string>
-			<key>Identifier</key>
-			<string>viewControllerSubclass</string>
-			<key>Name</key>
-			<string>Subclass of:</string>
-			<key>NotPersisted</key>
-			<true/>
-			<key>Required</key>
-			<string>YES</string>
-			<key>Type</key>
-			<string>class</string>
-			<key>Values</key>
-			<array>
-				<string>UIViewController</string>
-				<string>UITableViewController</string>
-				<string>UICollectionViewController</string>
-			</array>
-		</dict>
-		<dict>
 			<key>Identifier</key>
 			<string>VIPAddition</string>
 			<key>Name</key>
@@ -150,7 +126,7 @@
 			<key>Type</key>
 			<string>popup</string>
 			<key>Default</key>
-			<string>Factory Dependency Injection</string>
+			<string>UIViewController Factory DI</string>
 			<key>Required</key>
 			<true/>
 			<key>Values</key>
@@ -158,18 +134,6 @@
 				<string>Factory Dependency Injection</string>
 				<string>None</string>
 			</array>
-		</dict>
-		<dict>
-			<key>Identifier</key>
-			<string>VIPArchitecture</string>
-			<key>Name</key>
-			<string>Add base VIP architecture protocols</string>
-			<key>Description</key>
-			<string>Adds 1 or 2 more .swift files, which contains base generic protocols for the VIP architecture</string>
-			<key>Type</key>
-			<string>checkbox</string>
-			<key>Default</key>
-			<false/>
 		</dict>
 	</array>
 	<key>Platforms</key>

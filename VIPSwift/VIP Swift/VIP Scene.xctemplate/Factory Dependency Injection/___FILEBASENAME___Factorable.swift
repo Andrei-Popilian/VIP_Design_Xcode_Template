@@ -12,12 +12,12 @@
 
 import UIKit
 
+#warning("Remove this struct or move it to a separate file")
+struct AppInjector {}
+
 extension AppInjector {
   
-  struct ___VARIABLE_sceneName___Injector {
-    static let shared: ___VARIABLE_sceneName___Injector = ___VARIABLE_sceneName___Injector()
-    private init() {}
-  }
+  struct ___VARIABLE_sceneName___Injector {}
 }
 
 extension AppInjector.___VARIABLE_sceneName___Injector: ___VARIABLE_sceneName___Factorable {}
@@ -62,7 +62,7 @@ protocol ___VARIABLE_sceneName___ServicesFactorable {
 
 extension ___VARIABLE_sceneName___ServicesFactorable {
   
-  //    func makeXService() -> xService {
-  //        xService()
-  //    }
+  //func makeXService() -> xService {
+  //   xService()
+  //}
 }
