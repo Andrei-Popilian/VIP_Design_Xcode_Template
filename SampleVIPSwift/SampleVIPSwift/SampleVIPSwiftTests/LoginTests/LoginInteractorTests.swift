@@ -52,7 +52,7 @@ extension LoginInteractorTests {
 // MARK: - LoginFactorable
 extension LoginInteractorTests: LoginFactorable {
   
-  func makePresenter(_ viewController: LoginDisplayLogic?) -> LoginPresentationLogic {
+  func makePresenter(viewController: LoginDisplayLogic?) -> LoginPresentationLogic {
     presenter = LoginPresenterSpy()
     return presenter
   }

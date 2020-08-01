@@ -28,7 +28,7 @@ final class ___VARIABLE_sceneName___ViewController: UIViewController {
     
     super.init(nibName: nil, bundle: nil)
     interactor = ___VARIABLE_sceneName___Interactor(viewController: self, dataSource: dataSource)
-    router = ___VARIABLE_sceneName___Router(self)
+    router = ___VARIABLE_sceneName___Router(viewController: self)
   }
   
   override func viewDidLoad() {
@@ -39,7 +39,7 @@ final class ___VARIABLE_sceneName___ViewController: UIViewController {
   override func loadView() {
     view = mainView
   }
-
+  
   @available(*, unavailable)
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented, You should't initialize the ViewController through Storyboards")
@@ -49,11 +49,11 @@ final class ___VARIABLE_sceneName___ViewController: UIViewController {
 
 // MARK: - ___VARIABLE_sceneName___DisplayLogic
 extension ___VARIABLE_sceneName___ViewController: ___VARIABLE_sceneName___DisplayLogic {
-
+  
   func displayViewModel(_ viewModel: ___VARIABLE_sceneName___Model.ViewModel) {
     DispatchQueue.main.async {
       switch viewModel {
-
+        
       case .doSomething(let viewModel):
         self.displayDoSomething(viewModel)
       }

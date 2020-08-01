@@ -19,7 +19,7 @@ protocol ___VARIABLE_sceneName___PresentationLogic {
 final class ___VARIABLE_sceneName___Presenter {
   private weak var viewController: ___VARIABLE_sceneName___DisplayLogic?
   
-  init(_ viewController: ___VARIABLE_sceneName___DisplayLogic?) {
+  init(viewController: ___VARIABLE_sceneName___DisplayLogic?) {
     self.viewController = viewController
   }
 }

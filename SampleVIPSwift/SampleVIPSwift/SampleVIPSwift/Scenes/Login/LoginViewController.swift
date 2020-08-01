@@ -21,7 +21,6 @@ final class LoginViewController: UIViewController {
   
   typealias LoginFactory = LoginInteractorFactorable & LoginRouterFactorable
   
-  private let factory: LoginFactory
   private let mainView: LoginView
   private var interactor: LoginInteractable!
   private var router: LoginRouting!
@@ -30,7 +29,6 @@ final class LoginViewController: UIViewController {
                 mainView: LoginView,
                 dataSource: LoginModel.DataSource) {
     
-    self.factory = factory
     self.mainView = mainView
     
     super.init(nibName: nil, bundle: nil)
@@ -57,7 +55,7 @@ extension LoginViewController: LoginDisplayLogic {
   func displayViewModel(_ viewModel: LoginModel.ViewModel) {
     DispatchQueue.main.async {
       switch viewModel {
-      
+        
       case .authenticate(let userId):
         self.displayAuthenticationSuccess(withUserId: userId)
       }

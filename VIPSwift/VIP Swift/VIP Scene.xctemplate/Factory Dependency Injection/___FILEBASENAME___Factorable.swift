@@ -31,7 +31,7 @@ protocol ___VARIABLE_sceneName___InteractorFactorable {
 }
 
 protocol ___VARIABLE_sceneName___PresenterFactorable {
-  func makePresenter(_ viewController: ___VARIABLE_sceneName___DisplayLogic?) -> ___VARIABLE_sceneName___PresentationLogic
+  func makePresenter(viewController: ___VARIABLE_sceneName___DisplayLogic?) -> ___VARIABLE_sceneName___PresentationLogic
 }
 
 protocol ___VARIABLE_sceneName___RouterFactorable {
@@ -44,12 +44,12 @@ extension ___VARIABLE_sceneName___Factorable {
     ___VARIABLE_sceneName___Interactor(factory: factory, viewController: viewController, dataSource: dataSource)
   }
   
-  func makePresenter(_ viewController: ___VARIABLE_sceneName___DisplayLogic?) -> ___VARIABLE_sceneName___PresentationLogic {
-    ___VARIABLE_sceneName___Presenter(viewController)
+  func makePresenter(viewController: ___VARIABLE_sceneName___DisplayLogic?) -> ___VARIABLE_sceneName___PresentationLogic {
+    ___VARIABLE_sceneName___Presenter(viewController: viewController)
   }
   
   func makeRouter(viewController: UIViewController?) -> ___VARIABLE_sceneName___Routing {
-    ___VARIABLE_sceneName___Router(viewController)
+    ___VARIABLE_sceneName___Router(viewController: viewController)
   }
 }
 

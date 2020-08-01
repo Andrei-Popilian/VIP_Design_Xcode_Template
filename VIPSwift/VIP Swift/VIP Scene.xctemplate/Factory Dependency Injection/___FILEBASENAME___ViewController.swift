@@ -20,14 +20,12 @@ protocol ___VARIABLE_sceneName___DisplayLogic where Self: UIViewController {
 final class ___VARIABLE_sceneName___ViewController: UIViewController {
   
   typealias ___VARIABLE_sceneName___Factory = ___VARIABLE_sceneName___InteractorFactorable & ___VARIABLE_sceneName___RouterFactorable
-  
-  private let factory: ___VARIABLE_sceneName___Factory
+
   private let mainView: ___VARIABLE_sceneName___View
   private var interactor: ___VARIABLE_sceneName___Interactable!
   private var router: ___VARIABLE_sceneName___Routing!
   
   required init(factory: ___VARIABLE_sceneName___Factory, mainView: ___VARIABLE_sceneName___View, dataSource: ___VARIABLE_sceneName___Model.DataSource) {
-    self.factory = factory
     self.mainView = mainView
     
     super.init(nibName: nil, bundle: nil)

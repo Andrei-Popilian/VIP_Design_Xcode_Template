@@ -5,7 +5,7 @@
 	<key>DefaultCompletionName</key>
 	<string>MyScene</string>
 	<key>Description</key>
-	<string>This generates a new unit tests  for scene.</string>
+	<string>This generates new Unit Tests for a scene.</string>
 	<key>Kind</key>
 	<string>Xcode.IDEKit.TextSubstitutionFileTemplateKind</string>
 	<key>Options</key>
@@ -16,7 +16,7 @@
 			<key>Identifier</key>
 			<string>sceneName</string>
 			<key>Name</key>
-			<string>New Scene Name:</string>
+			<string>Scene Name:</string>
 			<key>NotPersisted</key>
 			<true/>
 			<key>Required</key>
@@ -96,6 +96,6 @@
 	<key>SortOrder</key>
 	<string>6</string>
 	<key>Summary</key>
-	<string>This generates unitTests for the clean architecture.</string>
+	<string>This template generates Unit Tests for the Clean Architecture.</string>
 </dict>
 </plist>

@@ -16,39 +16,38 @@ import XCTest
 
 final class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
   
-  private static var presenter: ___VARIABLE_sceneName___Presenter!
+  private var presenter: ___VARIABLE_sceneName___Presenter!
   private var viewController: ___VARIABLE_sceneName___ViewControllerSpy!
   
-  struct ___VARIABLE_sceneName___InjectorTest: ___VARIABLE_sceneName___Factorable {
-    
-    func makePresenter(_ viewController: ___VARIABLE_sceneName___DisplayLogic?) -> ___VARIABLE_sceneName___PresentationLogic {
-      presenter = ___VARIABLE_sceneName___Presenter(viewController)
-      return presenter
-    }
-  }
-  
-  final class ___VARIABLE_sceneName___ViewControllerSpy: ___VARIABLE_sceneName___ViewController {
-    var firstResult: String!
-    
-    override func displayViewModel(_ viewModel: ___VARIABLE_sceneName___Model.ViewModel) {
-      
-      switch viewModel {
-        //      case .doSomething(let result):
-        //        firstResult = result
-      }
-    }
-  }
-  
   override func setUp() {
-    viewController = ___VARIABLE_sceneName___ViewControllerSpy(factory: ___VARIABLE_sceneName___InjectorTest(), mainView: ___VARIABLE_sceneName___View(), dataSource: ___VARIABLE_sceneName___Model.DataSource())
+    viewController = ___VARIABLE_sceneName___ViewControllerSpy()
+    presenter = ___VARIABLE_sceneName___Presenter(viewController: viewController)
   }
   
   override func tearDown() {
     viewController = nil
-    ___VARIABLE_sceneName___PresenterTests.presenter = nil
+    presenter = nil
   }
+}
+
+
+// MARK: - Tests
+extension ___VARIABLE_sceneName___PresenterTests {
   
-  func test___VARIABLE_sceneName___PresenterWhenShouldThen() {
-    //add test here
+  func testExample() {
+  }
+}
+
+
+
+// MARK: - Spy Classes Setup
+private extension ___VARIABLE_sceneName___PresenterTests {
+  
+  final class ___VARIABLE_sceneName___ViewControllerSpy: UIViewController, ___VARIABLE_sceneName___DisplayLogic {
+    
+    func displayViewModel(_ viewModel: ___VARIABLE_sceneName___Model.ViewModel) {
+      
+      #warning("handle viewModels")
+    }
   }
 }

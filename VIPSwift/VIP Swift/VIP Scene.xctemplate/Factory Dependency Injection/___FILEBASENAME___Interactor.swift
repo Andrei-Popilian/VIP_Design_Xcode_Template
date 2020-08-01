@@ -33,7 +33,7 @@ final class ___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___DataStor
   init(factory: ___VARIABLE_sceneName___InteractorFactorable.InteractableFactory, viewController: ___VARIABLE_sceneName___DisplayLogic?, dataSource: ___VARIABLE_sceneName___Model.DataSource) {
     self.factory = factory
     self.dataSource = dataSource
-    self.presenter = factory.makePresenter(viewController)
+    self.presenter = factory.makePresenter(viewController: viewController)
   }
 }
 

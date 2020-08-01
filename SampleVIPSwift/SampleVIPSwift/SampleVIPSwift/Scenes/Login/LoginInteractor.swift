@@ -36,7 +36,7 @@ final class LoginInteractor: LoginDataStore {
 
     self.factory = factory
     self.dataSource = dataSource
-    presenter = factory.makePresenter(viewController)
+    presenter = factory.makePresenter(viewController: viewController)
   }
 }
 

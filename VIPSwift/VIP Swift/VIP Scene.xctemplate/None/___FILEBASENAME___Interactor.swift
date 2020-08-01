@@ -31,7 +31,7 @@ final class ___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___DataStor
   
   init(viewController: ___VARIABLE_sceneName___DisplayLogic?, dataSource: ___VARIABLE_sceneName___Model.DataSource) {
     self.dataSource = dataSource
-    self.presenter = ___VARIABLE_sceneName___Presenter(viewController)
+    self.presenter = ___VARIABLE_sceneName___Presenter(viewController: viewController)
   }
 }
 

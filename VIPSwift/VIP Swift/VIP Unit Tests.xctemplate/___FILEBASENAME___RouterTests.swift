@@ -16,45 +16,39 @@ import XCTest
 
 final class ___VARIABLE_sceneName___RouterTests: XCTestCase {
   
-  private static var router: ___VARIABLE_sceneName___Router!
+  private var router: ___VARIABLE_sceneName___Router!
   private var viewController: ___VARIABLE_sceneName___ViewControllerSpy!
-  
-  struct ___VARIABLE_sceneName___InjectorTest: ___VARIABLE_sceneName___Factorable {
-    
-    func makeRouter(viewController: UIViewController?) -> ___VARIABLE_sceneName___Routing {
-      router = ___VARIABLE_sceneName___Router(viewController)
-      return router
-    }
-  }
-  
-  final class ___VARIABLE_sceneName___ViewControllerSpy: ___VARIABLE_sceneName___ViewController {
-    var deinitExpectation: XCTestExpectation!
-    var isDismissed: Bool = false
-    
-    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
-      isDismissed = true
-      deinitExpectation.fulfill()
-    }
-  }
-  
+
   override func setUp() {
-    viewController = ___VARIABLE_sceneName___ViewControllerSpy(factory: ___VARIABLE_sceneName___InjectorTest(), mainView: ___VARIABLE_sceneName___View(), dataSource: ___VARIABLE_sceneName___Model.DataSource())
+    viewController = ___VARIABLE_sceneName___ViewControllerSpy()
+    router = ___VARIABLE_sceneName___Router(viewController: viewController)
   }
-  
+
   override func tearDown() {
     viewController = nil
-    ___VARIABLE_sceneName___RouterTests.router = nil
-  }
-  
-  func test___VARIABLE_sceneName___RouterShouldDismissViewController() {
-    
-    XCTAssertFalse(viewController.isDismissed)
-    viewController.deinitExpectation = expectation(description: "___VARIABLE_sceneName___ViewControllerDeinited")
-    ___VARIABLE_sceneName___RouterTests.router.routeTo(.dismiss___VARIABLE_sceneName___Scene)
-    
-    waitForExpectations(timeout: 1, handler: nil)
-    
-    XCTAssertTrue(viewController.isDismissed)
+    router = nil
   }
 }
 
+
+// MARK: - Tests
+extension ___VARIABLE_sceneName___RouterTests {
+
+  func textExample() {
+  }
+}
+
+
+// MARK: - Spy Classes Setup
+private extension ___VARIABLE_sceneName___RouterTests {
+
+  final class ___VARIABLE_sceneName___ViewControllerSpy: UIViewController {
+    var dismissExpectation: XCTestExpectation!
+    var isDismissed: Bool = false
+
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+      isDismissed = true
+      dismissExpectation.fulfill()
+    }
+  }
+}

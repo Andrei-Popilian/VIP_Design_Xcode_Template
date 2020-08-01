@@ -34,10 +34,10 @@ extension LoginRouterTests {
   func testLoginRouterShouldDismissViewController() {
     
     XCTAssertFalse(viewController.isDismissed)
-    viewController.deinitExpectation = expectation(description: "deinitExpectation")
+    viewController.dismissExpectation = expectation(description: "dismissExpectation")
     
     router.routeTo(.dismissLoginScene)
-    wait(for: [viewController.deinitExpectation], timeout: 0.1)
+    wait(for: [viewController.dismissExpectation], timeout: 0.1)
     
     XCTAssertTrue(viewController.isDismissed)
   }
@@ -48,12 +48,12 @@ extension LoginRouterTests {
 private extension LoginRouterTests {
   
   final class LoginViewControllerSpy: UIViewController {
-    var deinitExpectation: XCTestExpectation!
+    var dismissExpectation: XCTestExpectation!
     var isDismissed: Bool = false
     
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
       isDismissed = true
-      deinitExpectation.fulfill()
+      dismissExpectation.fulfill()
     }
   }
 }

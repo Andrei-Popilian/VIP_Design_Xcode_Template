@@ -21,7 +21,7 @@ final class ___VARIABLE_sceneName___Router {
   
   private weak var viewController: UIViewController?
   
-  init(_ viewController: UIViewController?) {
+  init(viewController: UIViewController?) {
     self.viewController = viewController
   }
 }
