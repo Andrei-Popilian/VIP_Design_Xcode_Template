@@ -31,7 +31,7 @@ protocol LoginInteractorFactorable {
 }
 
 protocol LoginPresenterFactorable {
-  func makePresenter(_ viewController: LoginDisplayLogic?) -> LoginPresentationLogic
+  func makePresenter(viewController: LoginDisplayLogic?) -> LoginPresentationLogic
 }
 
 protocol LoginRouterFactorable {
@@ -49,7 +49,7 @@ extension LoginFactorable {
     LoginInteractor(factory: factory, viewController: viewController, dataSource: dataSource)
   }
   
-  func makePresenter(_ viewController: LoginDisplayLogic?) -> LoginPresentationLogic {
+  func makePresenter(viewController: LoginDisplayLogic?) -> LoginPresentationLogic {
     LoginPresenter(viewController)
   }
   

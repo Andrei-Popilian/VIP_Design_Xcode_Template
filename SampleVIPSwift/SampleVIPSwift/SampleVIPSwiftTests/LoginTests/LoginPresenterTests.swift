@@ -25,22 +25,26 @@ final class LoginPresenterTests: XCTestCase {
     viewController = nil
     presenter = nil
   }
+}
+
+
+// MARK: - Tests
+extension LoginPresenterTests {
   
   func testLoginPresenterShouldSendUserIdToPresenterProperly() {
     
     XCTAssertNil(viewController.passedUserId)
     let testUserId = "84fnfn4jfd"
     presenter.presentResponse(.authenticate(withUserId: testUserId))
-
+    
     XCTAssertEqual(viewController.passedUserId, testUserId + "test")
   }
 }
 
 
-
 // MARK: - Spy Classes Setup
 private extension LoginPresenterTests {
-
+  
   final class LoginViewControllerSpy: UIViewController, LoginDisplayLogic {
     var passedUserId: String!
     

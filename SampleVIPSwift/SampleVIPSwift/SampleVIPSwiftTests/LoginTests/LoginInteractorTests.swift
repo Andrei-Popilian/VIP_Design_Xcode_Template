@@ -25,19 +25,23 @@ final class LoginInteractorTests: XCTestCase {
     interactor = nil
     authService = nil
   }
+}
+
+
+// MARK: - Tests
+extension LoginInteractorTests {
   
-  func testLoginInteractorShouldAuthenticateSuccessfullAndSendUserIdToPresenter() {
-
+  func testAuthenticate() {
     presenter.authExpectation = expectation(description: "authExpectation")
-
+    
     XCTAssertTrue(interactor.dataSource.userId == nil, "UserId should be nil at this step")
-
+    
     let testEmail = "email11"
     let testPassword = "pass122"
     interactor.doRequest(.authenticate(withEmail: testEmail, andPassword: testPassword))
-
+    
     wait(for: [presenter.authExpectation], timeout: 0.1)
-
+    
     XCTAssertEqual(testEmail, authService.passedEmail)
     XCTAssertEqual(testPassword, authService.passedPassword)
     XCTAssertEqual(testEmail+testPassword, presenter.passedUserId)
@@ -47,12 +51,12 @@ final class LoginInteractorTests: XCTestCase {
 
 // MARK: - LoginFactorable
 extension LoginInteractorTests: LoginFactorable {
-
+  
   func makePresenter(_ viewController: LoginDisplayLogic?) -> LoginPresentationLogic {
     presenter = LoginPresenterSpy()
     return presenter
   }
-
+  
   func makeAuthService() -> AuthServiceProtocol {
     authService = AuthServiceSpy()
     return authService
@@ -62,7 +66,7 @@ extension LoginInteractorTests: LoginFactorable {
 
 // MARK: - Spy Classes Setup
 private extension LoginInteractorTests {
-
+  
   final class LoginPresenterSpy: LoginPresentationLogic {
     var authExpectation: XCTestExpectation!
     var passedUserId: String!
@@ -76,16 +80,16 @@ private extension LoginInteractorTests {
       }
     }
   }
-
+  
   final class AuthServiceSpy: AuthServiceProtocol {
-
+    
     var passedEmail: String!
     var passedPassword: String!
-
+    
     func doAuth(withEmail email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
       passedEmail = email
       passedPassword = password
-
+      
       let userId = email + password
       completion(.success(userId))
     }

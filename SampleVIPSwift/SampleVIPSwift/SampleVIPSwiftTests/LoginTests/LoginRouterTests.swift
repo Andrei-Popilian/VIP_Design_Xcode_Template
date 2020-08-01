@@ -11,7 +11,7 @@ import XCTest
 @testable import SampleVIPSwift
 
 
-final class LoginRouterTests: XCTestCase, LoginFactorable {
+final class LoginRouterTests: XCTestCase {
   
   private var router: LoginRouting!
   private var viewController: LoginViewControllerSpy!
@@ -25,12 +25,17 @@ final class LoginRouterTests: XCTestCase, LoginFactorable {
     viewController = nil
     router = nil
   }
+}
+
+
+// MARK: - Tests
+extension LoginRouterTests {
   
   func testLoginRouterShouldDismissViewController() {
     
     XCTAssertFalse(viewController.isDismissed)
     viewController.deinitExpectation = expectation(description: "deinitExpectation")
-
+    
     router.routeTo(.dismissLoginScene)
     wait(for: [viewController.deinitExpectation], timeout: 0.1)
     
@@ -41,11 +46,11 @@ final class LoginRouterTests: XCTestCase, LoginFactorable {
 
 // MARK: - Spy Classes Setup
 private extension LoginRouterTests {
-
+  
   final class LoginViewControllerSpy: UIViewController {
     var deinitExpectation: XCTestExpectation!
     var isDismissed: Bool = false
-
+    
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
       isDismissed = true
       deinitExpectation.fulfill()

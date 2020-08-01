@@ -15,7 +15,7 @@ import Foundation
 typealias LoginInteractable = LoginBusinessLogic & LoginDataStore
 
 protocol LoginBusinessLogic {
-  
+
   func doRequest(_ request: LoginModel.Request)
 }
 
@@ -24,16 +24,16 @@ protocol LoginDataStore {
 }
 
 final class LoginInteractor: LoginDataStore {
-  
+
   var dataSource: LoginModel.DataSource
-  
+
   private var factory: LoginInteractorFactorable.InteractableFactory
   private var presenter: LoginPresentationLogic
-  
+
   init(factory: LoginInteractorFactorable.InteractableFactory,
        viewController: LoginDisplayLogic?,
        dataSource: LoginModel.DataSource) {
-    
+
     self.factory = factory
     self.dataSource = dataSource
     presenter = factory.makePresenter(viewController)
@@ -43,12 +43,12 @@ final class LoginInteractor: LoginDataStore {
 
 //MARK: - LoginBusinessLogic
 extension LoginInteractor: LoginBusinessLogic {
-  
+
   func doRequest(_ request: LoginModel.Request) {
     DispatchQueue.global(qos: .userInitiated).async {
-      
+
       switch request {
-      
+
       case .authenticate(let email, let password):
         self.doAuthentication(withEmail: email, andPassword: password)
       }
@@ -59,20 +59,23 @@ extension LoginInteractor: LoginBusinessLogic {
 
 //MARK: - Private Zone
 private extension LoginInteractor {
-  
+
   func doAuthentication(withEmail email: String, andPassword password: String) {
-    
+
     let authService = factory.makeAuthService()
-    
+
     authService.doAuth(withEmail: email, password: password, completion: { [weak self] result in
-      guard let self = self else { return }
-      
+      guard let self = self else {
+        return
+      }
+
       switch result {
-      
+
+      //do error handling or pass to the error handler
       case .failure(let error):
         print(error)
-      //do error handling or pass to error handler
-      
+
+
       case .success(let userId):
         self.dataSource.userId = userId
         self.presenter.presentResponse(.authenticate(withUserId: userId))
