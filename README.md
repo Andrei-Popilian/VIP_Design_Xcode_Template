@@ -39,7 +39,7 @@ make uninstall_templates
 
 <img width="722" alt="SceneTemplate" src="https://user-images.githubusercontent.com/45980382/89118348-5e006d00-d4a5-11ea-93d4-c7e406f201da.png">
 
-* Give a scene name and it should autogenerate all the files needed: ViewController, Interactor, Presenter, Router, View and Model
+* Set a scene name and it should generate all the needed files: ViewController, Interactor, Presenter, Router, View and Model
 
 * **Additions**: With or without Dependecy Injection
 <img width="294" alt="Screenshot 2019-12-16 at 17 30 58" src="https://user-images.githubusercontent.com/45980382/75621562-53f4de00-5b96-11ea-8673-5e6168eecc18.png">
