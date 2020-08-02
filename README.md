@@ -1,7 +1,7 @@
 # VIP Xcode Templates
-VIP design pattern (Clean Swift by Uncle Bob)
+VIP design pattern (Clean Architecture by Uncle Bob)
 
-To learn more about Clean Swift and the VIP cycle, please read:
+To learn more about Clean Swift, please read:
 
 http://clean-swift.com/clean-swift-ios-architecture
 
@@ -19,13 +19,13 @@ http://clean-swift.com/clean-swift-ios-architecture
 * Download the repository and use the following commands:
 
 ### Install Templates
-* To install the templates, use the terminal and go to "VIPSwift" Folder (where the Makefile script is) and run the following command:
+* To install the templates, use the terminal and go to "VIPSwift" Folder (where the "Makefile" script is) and run the following command:
 ```bash
 make install_templates
 ```
 
 ### Uninstall Templates
-* To uninstall the templates, use the terminal and go to "VIPSwift" Folder (where the Makefile script is) and run the following command:
+* To uninstall the templates, use the terminal and go to "VIPSwift" Folder (where the "Makefile" script is) and run the following command:
 ```bash
 make uninstall_templates
 ```
@@ -37,7 +37,7 @@ make uninstall_templates
 
 ### Scene Template
 
-<img width="722" alt="Screenshot 2019-12-16 at 16 57 15" src="https://user-images.githubusercontent.com/45980382/75621559-463f5880-5b96-11ea-99d1-30e4146d4e63.png">
+<img width="722" alt="SceneTemplate" src="https://user-images.githubusercontent.com/45980382/89118348-5e006d00-d4a5-11ea-93d4-c7e406f201da.png">
 
 * Give a scene name and it should autogenerate all the files needed: ViewController, Interactor, Presenter, Router, View and Model
 
@@ -46,17 +46,17 @@ make uninstall_templates
 
 * Factory Dependency Injection will add 1 more file **(SceneName)Factorable**, and the entire implementation will support **Factory** Dependecy Injection pattern
 
-* For more details about the implementation or unit tests, please check the sample project inside repository **SampleVIPSwift/SampleVIPSwift.xcodeproj**
+* For more details about the implementation or how can you Unit Tests the app, please check the sample project inside repository **SampleVIPSwift/SampleVIPSwift.xcodeproj**
 
  
  ### Unit Tests Template
  
  * Will create 4 Unit Test files, representing tests for each component: ViewController, Interactor, Presenter, Router
  
- <img width="719" alt="Screenshot 2019-12-16 at 16 58 49" src="https://user-images.githubusercontent.com/45980382/75621575-6bcc6200-5b96-11ea-8d3a-1342d7b1d923.png">
+ <img width="719" alt="UnitTestsTemplate" src="https://user-images.githubusercontent.com/45980382/89118359-740e2d80-d4a5-11ea-8615-e7794955f1a0.png">
 
 
 ## Problems, Suggestions, Pull Requests?
-Please open a [new Issue here](https://github.com/Andrei-Popilian/VIP_Design_Xcode_Template/issues/new) if you run into a problem specific to those templates, have a feature request, find a better implementation, or want to share a comment.
+Please open a [New Issue Here](https://github.com/Andrei-Popilian/VIP_Design_Xcode_Template/issues/new) if you run into a problem specific to those templates, have a feature request, find a better implementation, or want to share a comment.
 
 Pull requests are encouraged and greatly appreciated! Please try to maintain consistency with the existing code style. If you're considering taking on significant changes or additions to the project, please communicate in advance by opening a new Issue. This allows everyone to get onboard with upcoming changes, ensures that changes align with the project's design philosophy, and avoids duplicated work.
